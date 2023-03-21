@@ -1,0 +1,38 @@
+name: Automated API Testing Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Create a directory for test reports
+      - name: Create test report directory
+        run: |
+          mkdir -p automationTestReports
+          
+      # Install Newman, the reporter for Slack, and the HTML Extra reporter
+      - name: Install Newman and reporters
+        run: |
+          npm install -g newman newman-reporter-slackreporter newman-reporter-htmlextra
+      
+      # Run the POSTMAN collection using Newman
+      - name: Run API tests
+        run: |
+         newman run "BetterWorks_PublicAPI.postman_collection.json" -e "Public_APIs.postman_environment.json" \
+            -r cli,htmlextra \
+            --reporter-htmlextra-export "automationTestReports/testRunReport.html"
+      
+      # Upload the test report to the artifacts directory
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Report
+          path: automationTestReports/testRunReport.html
+          
+    
