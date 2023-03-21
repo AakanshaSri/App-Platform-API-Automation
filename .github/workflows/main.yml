@@ -24,7 +24,7 @@ jobs:
       # Run the POSTMAN collection using Newman
       - name: Run API tests
         run: |
-         newman run "PublicApi.json" -e "Public_APIs.postman_environment.json" \
+         newman run "PublicApi.postman_collection.json" -e "Public_APIs.postman_environment.json" \
             -r cli,htmlextra \
             --reporter-htmlextra-export "automationTestReports/testRunReport.html"
       
