@@ -57,7 +57,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/conversations/?page=1&size=200",
+									"raw": "{{baseUrl}}/api/v1/conversations/?page=1&size=10",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -105,7 +105,7 @@
 										},
 										{
 											"key": "size",
-											"value": "200"
+											"value": "10"
 										}
 									]
 								},
@@ -933,32 +933,32 @@
 	],
 	"variable": [
 		{
-			"id": "057c41c6-1139-44d2-ae9d-01abcbca9fe8",
+			"id": "02d594bb-d3ba-4957-bf02-c5637eafd5b7",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "da39eac6-6b3b-45c7-aded-07aa21a09ced",
+			"id": "b15a93df-9750-42e0-a44d-3edb4a7137c0",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "f2460d0e-a3c2-4ab3-9266-5ff441f24dc0",
+			"id": "49e0bb36-fdf7-4ad3-8347-09c74d09cae8",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "ce1b8984-eb3f-494b-a4e7-d63127e03465",
+			"id": "8ec14f91-6d65-468e-be98-bda8e16d21cf",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "69b234e4-1a2f-4c44-81af-a3fd1f8a962c",
+			"id": "c6f2f0a2-c73e-486c-a5e1-84d89e5c89aa",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "3dc4a8ee-68bb-4abd-90fb-1456619b097e",
+			"id": "4ba24987-de9c-49a1-a5c7-2a47012fab5d",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
