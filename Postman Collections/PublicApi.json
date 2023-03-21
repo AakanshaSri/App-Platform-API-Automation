@@ -13,7 +13,7 @@
 					"name": "conversation List",
 					"item": [
 						{
-							"name": "Get a list of conversations",
+							"name": "Get a list of conversations renamed",
 							"event": [
 								{
 									"listen": "test",
@@ -933,32 +933,32 @@
 	],
 	"variable": [
 		{
-			"id": "7930d05a-f370-47d6-a387-ef93691c2a50",
+			"id": "a23a1378-7775-46d1-87fa-eefb25b2ca20",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "91e3f0c1-bd32-4538-a4b7-1bc143b1748e",
+			"id": "300a0310-6e9f-4408-ae82-86cbd4f2f607",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "a045d0cd-0631-4a16-9601-e4485f3791fc",
+			"id": "e8b9d373-b785-483b-964f-2537ae9eba0a",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "ec82de81-124c-4f75-819c-3e7e5f6d3f40",
+			"id": "a30853aa-b6b1-41cf-8ac0-501593f7172e",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "6f270edb-7896-4bc0-841b-725a0e111ed7",
+			"id": "bfa40064-edbf-4c8f-af8b-5dd27799da82",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "45afa61a-474d-4178-a8c7-255886832748",
+			"id": "f9a1d84d-a493-4a43-b8d1-bbdb192f097f",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
