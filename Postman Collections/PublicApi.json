@@ -57,7 +57,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/conversations/?page=1&size=10",
+									"raw": "{{baseUrl}}/api/v1/conversations/?page=1&size=200",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -105,7 +105,7 @@
 										},
 										{
 											"key": "size",
-											"value": "10"
+											"value": "200"
 										}
 									]
 								},
@@ -933,32 +933,32 @@
 	],
 	"variable": [
 		{
-			"id": "a23a1378-7775-46d1-87fa-eefb25b2ca20",
+			"id": "8071487d-2dd3-4d14-af21-f84965af3f0d",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "300a0310-6e9f-4408-ae82-86cbd4f2f607",
+			"id": "b72508d5-4a91-48f9-9885-f6b103f3367e",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "e8b9d373-b785-483b-964f-2537ae9eba0a",
+			"id": "a7530794-91c1-4999-9454-ecee7c4d3bfe",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "a30853aa-b6b1-41cf-8ac0-501593f7172e",
+			"id": "92fc3b9a-f006-427c-9d6f-eedad4d76fc4",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "bfa40064-edbf-4c8f-af8b-5dd27799da82",
+			"id": "1b3665b1-3c3d-4271-a752-88534132119c",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "f9a1d84d-a493-4a43-b8d1-bbdb192f097f",
+			"id": "b1cefd2b-24d7-4483-ace5-ed23967b1f56",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
