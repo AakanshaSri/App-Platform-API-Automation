@@ -1,0 +1,1105 @@
+{
+	"info": {
+		"_postman_id": "703f1a34-f389-4e0c-820d-df6a3e697989",
+		"name": "BetterWorksPublicAPI",
+		"description": "BetterWorks API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "conversations",
+			"item": [
+				{
+					"name": "conversation List",
+					"item": [
+						{
+							"name": "Get a list of conversations",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "80545806-d1ae-4bcc-b15f-0d06bd331915",
+										"exec": [
+											"",
+											"",
+											"//Set collection veriabled from response",
+											"pm.test(\"Store values in collection variable\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"conversation_uuid\", jsonData.results[0].uuid)",
+											"    pm.environment.set(\"conversation_id\", jsonData.results[0].id);",
+											"    pm.environment.set(\"conversation_deployment_id\", jsonData.results[0].deployment_id);",
+											"    pm.environment.set(\"conversation_name\", jsonData.results[0].name);",
+											"    pm.environment.set(\"coneversation_manager_id\", jsonData.results[0].manager.id);",
+											"    pm.environment.set(\"conversation_employee_id\", jsonData.results[0].employee.id);",
+											"    pm.environment.set(\"conversation_delta_end\", jsonData.results[0].end);",
+											"    pm.environment.set(\"conversation_delta_start\", jsonData.results[0].start);",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "cfef0eb0-95fb-47c6-b3cb-6a410e311602",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/?page=1&size=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										""
+									],
+									"query": [
+										{
+											"key": "delta_end",
+											"value": "<dateTime>",
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"disabled": true
+										},
+										{
+											"key": "delta_start",
+											"value": "<dateTime>",
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"disabled": true
+										},
+										{
+											"key": "deployment_id",
+											"value": "<integer>",
+											"description": "The deployment ID associated with the conversations",
+											"disabled": true
+										},
+										{
+											"key": "employee_id",
+											"value": "",
+											"description": "Filter conversations on an employee ID",
+											"disabled": true
+										},
+										{
+											"key": "manager_id",
+											"value": "",
+											"description": "Filter conversations on a manager ID",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "Page number to return"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								},
+								"description": "Returns a list of conversations.\n            <strong>This endpoint is only available to users with the super admin role.</strong>"
+							},
+							"response": [
+								{
+									"id": "189e8488-ce48-46fa-89b5-3bdb19459348",
+									"name": "Successful response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/conversations/?delta_end=<dateTime>&delta_start=<dateTime>&deployment_id=<integer>&employee_id=<integer>&manager_id=<integer>&page=<integer>&size=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"conversations",
+												""
+											],
+											"query": [
+												{
+													"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+													"key": "delta_end",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+													"key": "delta_start",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "The deployment ID associated with the conversations",
+													"key": "deployment_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on an employee ID",
+													"key": "employee_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on a manager ID",
+													"key": "manager_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Page number to return",
+													"key": "page",
+													"value": "<integer>"
+												},
+												{
+													"description": "Number of items to return per page",
+													"key": "size",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"contributors\": [\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"rating\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        },\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"text\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployment_id\": \"<integer>\",\n      \"deployment_uuid\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"employee\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_notes\": \"<string>\",\n      \"employee_notes_updated\": \"<double>\",\n      \"employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"rating\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_review_end\": \"<date>\",\n      \"employee_status\": \"completed\",\n      \"employee_submit_end\": \"<date>\",\n      \"end\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_notes\": \"<string>\",\n      \"manager_notes_updated\": \"<double>\",\n      \"manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_review_end\": \"<date>\",\n      \"manager_status\": \"post_hr_completed\",\n      \"manager_submit_end\": \"<date>\",\n      \"marked_as_met\": \"not_required\",\n      \"modified_on\": \"<string>\",\n      \"name\": \"<string>\",\n      \"post_employee_questionnaire_pending\": \"<boolean>\",\n      \"post_employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"post_manager_questionnaire_pending\": \"<boolean>\",\n      \"post_manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"start\": \"<date>\",\n      \"type\": \"adhoc\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"contributors\": [\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"text\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"multiple_choice\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        },\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployment_id\": \"<integer>\",\n      \"deployment_uuid\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"employee\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_notes\": \"<string>\",\n      \"employee_notes_updated\": \"<double>\",\n      \"employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"rating\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_review_end\": \"<date>\",\n      \"employee_status\": \"shared\",\n      \"employee_submit_end\": \"<date>\",\n      \"end\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_notes\": \"<string>\",\n      \"manager_notes_updated\": \"<double>\",\n      \"manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_review_end\": \"<date>\",\n      \"manager_status\": \"post_hr_pending\",\n      \"manager_submit_end\": \"<date>\",\n      \"marked_as_met\": \"not_met\",\n      \"modified_on\": \"<string>\",\n      \"name\": \"<string>\",\n      \"post_employee_questionnaire_pending\": \"<boolean>\",\n      \"post_employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"post_manager_questionnaire_pending\": \"<boolean>\",\n      \"post_manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"start\": \"<date>\",\n      \"type\": \"scheduled\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "b9fe901f-f9fd-421f-89c5-eabf98c279ff",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/conversations/?delta_end=<dateTime>&delta_start=<dateTime>&deployment_id=<integer>&employee_id=<integer>&manager_id=<integer>&page=<integer>&size=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"conversations",
+												""
+											],
+											"query": [
+												{
+													"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+													"key": "delta_end",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+													"key": "delta_start",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "The deployment ID associated with the conversations",
+													"key": "deployment_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on an employee ID",
+													"key": "employee_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on a manager ID",
+													"key": "manager_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Page number to return",
+													"key": "page",
+													"value": "<integer>"
+												},
+												{
+													"description": "Number of items to return per page",
+													"key": "size",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"detail\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a list of conversations with params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "80545806-d1ae-4bcc-b15f-0d06bd331915",
+										"exec": [
+											"",
+											"// Test the response body",
+											"pm.test(\"Verify if Response body is valid\", function () {",
+											"    var jsonData = pm.response.json();",
+											" ",
+											"    pm.expect(jsonData.results[0]).to.have.property(\"name\", pm.environment.get(\"conversation_name\"));",
+											"    pm.expect(jsonData.results[0]).to.have.property(\"deployment_id\", pm.environment.get(\"conversation_deployment_id\"));",
+											"    pm.expect(jsonData.results[0]).to.have.property(\"start\", pm.environment.get(\"conversation_delta_start\"));",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "c8af5765-3b30-4468-93d6-ecdc04407ed0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/?delta_end={{conversation_delta_end}}&delta_start={{conversation_delta_start}}&deployment_id={{conversation_deployment_id}}&employee_id={{conversation_employee_id}}&manager_id={{coneversation_manager_id}}&page=1&size=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										""
+									],
+									"query": [
+										{
+											"key": "delta_end",
+											"value": "{{conversation_delta_end}}",
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`"
+										},
+										{
+											"key": "delta_start",
+											"value": "{{conversation_delta_start}}",
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
+										},
+										{
+											"key": "deployment_id",
+											"value": "{{conversation_deployment_id}}",
+											"description": "The deployment ID associated with the conversations"
+										},
+										{
+											"key": "employee_id",
+											"value": "{{conversation_employee_id}}",
+											"description": "Filter conversations on an employee ID"
+										},
+										{
+											"key": "manager_id",
+											"value": "{{coneversation_manager_id}}",
+											"description": "Filter conversations on a manager ID"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "Page number to return"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"description": "Number of items to return per page"
+										}
+									]
+								},
+								"description": "Returns a list of conversations.\n            <strong>This endpoint is only available to users with the super admin role.</strong>"
+							},
+							"response": [
+								{
+									"id": "42b257bd-6501-4bd6-823f-07627aa7258e",
+									"name": "Successful response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/conversations/?delta_end=<dateTime>&delta_start=<dateTime>&deployment_id=<integer>&employee_id=<integer>&manager_id=<integer>&page=<integer>&size=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"conversations",
+												""
+											],
+											"query": [
+												{
+													"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+													"key": "delta_end",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+													"key": "delta_start",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "The deployment ID associated with the conversations",
+													"key": "deployment_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on an employee ID",
+													"key": "employee_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on a manager ID",
+													"key": "manager_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Page number to return",
+													"key": "page",
+													"value": "<integer>"
+												},
+												{
+													"description": "Number of items to return per page",
+													"key": "size",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"contributors\": [\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"rating\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        },\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"text\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployment_id\": \"<integer>\",\n      \"deployment_uuid\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"employee\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_notes\": \"<string>\",\n      \"employee_notes_updated\": \"<double>\",\n      \"employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"rating\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_review_end\": \"<date>\",\n      \"employee_status\": \"completed\",\n      \"employee_submit_end\": \"<date>\",\n      \"end\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_notes\": \"<string>\",\n      \"manager_notes_updated\": \"<double>\",\n      \"manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_review_end\": \"<date>\",\n      \"manager_status\": \"post_hr_completed\",\n      \"manager_submit_end\": \"<date>\",\n      \"marked_as_met\": \"not_required\",\n      \"modified_on\": \"<string>\",\n      \"name\": \"<string>\",\n      \"post_employee_questionnaire_pending\": \"<boolean>\",\n      \"post_employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"post_manager_questionnaire_pending\": \"<boolean>\",\n      \"post_manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"start\": \"<date>\",\n      \"type\": \"adhoc\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"contributors\": [\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"text\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"multiple_choice\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        },\n        {\n          \"response\": {\n            \"created\": \"<float>\",\n            \"created_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"modified_on\": \"<dateTime>\",\n            \"responses\": [\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              },\n              {\n                \"answer\": \"<string>\",\n                \"created\": \"<float>\",\n                \"created_on\": \"<dateTime>\",\n                \"id\": \"<integer>\",\n                \"lock_date\": \"<date>\",\n                \"modified_on\": \"<dateTime>\",\n                \"question\": \"<string>\",\n                \"question_id\": \"<integer>\",\n                \"question_options\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"question_uuid\": \"<uuid>\",\n                \"rating_range\": \"<string>\",\n                \"type\": \"scale\",\n                \"updated\": \"<float>\",\n                \"uuid\": \"<uuid>\"\n              }\n            ],\n            \"shared_on\": \"<float>\",\n            \"submitted_on\": \"<float>\",\n            \"unlocked_until\": \"<date>\",\n            \"updated\": \"<float>\",\n            \"updated_by\": {\n              \"id\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"uuid\": \"<uuid>\"\n            },\n            \"uuid\": \"<uuid>\"\n          },\n          \"status\": \"post_hr_answering\",\n          \"user\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"uuid\": \"<uuid>\"\n          }\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployment_id\": \"<integer>\",\n      \"deployment_uuid\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"employee\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_notes\": \"<string>\",\n      \"employee_notes_updated\": \"<double>\",\n      \"employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"rating\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"scale\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"employee_review_end\": \"<date>\",\n      \"employee_status\": \"shared\",\n      \"employee_submit_end\": \"<date>\",\n      \"end\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_notes\": \"<string>\",\n      \"manager_notes_updated\": \"<double>\",\n      \"manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"manager_review_end\": \"<date>\",\n      \"manager_status\": \"post_hr_pending\",\n      \"manager_submit_end\": \"<date>\",\n      \"marked_as_met\": \"not_met\",\n      \"modified_on\": \"<string>\",\n      \"name\": \"<string>\",\n      \"post_employee_questionnaire_pending\": \"<boolean>\",\n      \"post_employee_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"post_manager_questionnaire_pending\": \"<boolean>\",\n      \"post_manager_response\": {\n        \"created\": \"<float>\",\n        \"created_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"id\": \"<integer>\",\n        \"modified_on\": \"<dateTime>\",\n        \"responses\": [\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"multiple_choice\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          },\n          {\n            \"answer\": \"<string>\",\n            \"created\": \"<float>\",\n            \"created_on\": \"<dateTime>\",\n            \"id\": \"<integer>\",\n            \"lock_date\": \"<date>\",\n            \"modified_on\": \"<dateTime>\",\n            \"question\": \"<string>\",\n            \"question_id\": \"<integer>\",\n            \"question_options\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"question_uuid\": \"<uuid>\",\n            \"rating_range\": \"<string>\",\n            \"type\": \"text\",\n            \"updated\": \"<float>\",\n            \"uuid\": \"<uuid>\"\n          }\n        ],\n        \"shared_on\": \"<float>\",\n        \"submitted_on\": \"<float>\",\n        \"unlocked_until\": \"<date>\",\n        \"updated\": \"<float>\",\n        \"updated_by\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"uuid\": \"<uuid>\"\n      },\n      \"start\": \"<date>\",\n      \"type\": \"scheduled\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "a131cec2-f764-4772-b413-83fadf1e2e81",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/conversations/?delta_end=<dateTime>&delta_start=<dateTime>&deployment_id=<integer>&employee_id=<integer>&manager_id=<integer>&page=<integer>&size=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"conversations",
+												""
+											],
+											"query": [
+												{
+													"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+													"key": "delta_end",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+													"key": "delta_start",
+													"value": "<dateTime>"
+												},
+												{
+													"description": "The deployment ID associated with the conversations",
+													"key": "deployment_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on an employee ID",
+													"key": "employee_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Filter conversations on a manager ID",
+													"key": "manager_id",
+													"value": "<integer>"
+												},
+												{
+													"description": "Page number to return",
+													"key": "page",
+													"value": "<integer>"
+												},
+												{
+													"description": "Number of items to return per page",
+													"key": "size",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"detail\": \"<string>\"\n}"
+								}
+							]
+						}
+					],
+					"_postman_id": "c61cb002-29dd-4c3a-bfbb-5d1f2e86b361",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get a list of conversation templates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce7cde1c-aa3b-4197-b66b-2eed33a61a9b",
+								"exec": [
+									"//Set collection veriabled from response",
+									"pm.test(\"Store values in collection variable\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"conversation_template_uuid\", jsonData.results[0].uuid)",
+									"    pm.environment.set(\"conversation_template_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"conversation_template_name\", jsonData.results[0].name);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "65e3bd61-04b3-42d8-8f5b-2cecb00f13e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/conversations/templates/?enabled=True&page=1&size=10&type=scheduled",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"templates",
+								""
+							],
+							"query": [
+								{
+									"key": "enabled",
+									"value": "True",
+									"description": "Filter conversation templates by enabled conversations"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Number of items to return per page"
+								},
+								{
+									"key": "type",
+									"value": "scheduled",
+									"description": "Filter conversation templates by type"
+								}
+							]
+						},
+						"description": "Returns a list of conversation templates.\n            <strong>This endpoint is only available to users with the admin or super admin role.</strong>"
+					},
+					"response": [
+						{
+							"id": "72a0895a-bff7-4524-ab50-14d07331a012",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/?enabled=<boolean>&page=<integer>&size=<integer>&type=scheduled",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										""
+									],
+									"query": [
+										{
+											"description": "Filter conversation templates by enabled conversations",
+											"key": "enabled",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter conversation templates by type",
+											"key": "type",
+											"value": "scheduled"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"detail\": \"<string>\"\n}"
+						},
+						{
+							"id": "72ab5e69-6973-44fa-a59a-547ed1aac1e5",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/?enabled=<boolean>&page=<integer>&size=<integer>&type=scheduled",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										""
+									],
+									"query": [
+										{
+											"description": "Filter conversation templates by enabled conversations",
+											"key": "enabled",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter conversation templates by type",
+											"key": "type",
+											"value": "scheduled"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"allowed_employees\": [\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<integer>\",\n          \"is_active\": \"<boolean>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<integer>\",\n          \"is_active\": \"<boolean>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"allowed_groups\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployments\": [\n        {\n          \"cycles\": [\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"matrix_manager\",\n              \"stage\": \"post_cycle\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            },\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"employee\",\n              \"stage\": \"primary\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            }\n          ],\n          \"description\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"cycles\": [\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"matrix_manager\",\n              \"stage\": \"post_cycle\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            },\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"manager\",\n              \"stage\": \"primary\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            }\n          ],\n          \"description\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"hr_admin_permission\": \"can_only_view\",\n      \"hrq_enabled\": \"<boolean>\",\n      \"hrq_is_concurrent\": \"<boolean>\",\n      \"hrq_notification_on_due\": \"<boolean>\",\n      \"hrq_notification_on_start\": \"<boolean>\",\n      \"hrq_participants\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<integer>\",\n      \"is_goal_creation_enabled\": \"<boolean>\",\n      \"matrix_manager_can_see_direct_report_responses\": \"<boolean>\",\n      \"matrix_manager_can_see_responses\": \"<boolean>\",\n      \"matrix_manager_enabled\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"notification_midcycle_days\": \"<integer>\",\n      \"notification_on_end\": \"<boolean>\",\n      \"notification_on_start\": \"<boolean>\",\n      \"notification_overdue_days\": \"<integer>\",\n      \"only_managers_can_initiate\": \"<boolean>\",\n      \"participants\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"require_marked_as_met\": \"<boolean>\",\n      \"skip_level_managers_level\": \"any\",\n      \"skip_level_managers_permission\": \"can_edit\",\n      \"super_admin_permission\": \"no_access\",\n      \"type\": \"scheduled\",\n      \"updated\": \"<float>\",\n      \"updated_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"allowed_employees\": [\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<integer>\",\n          \"is_active\": \"<boolean>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<integer>\",\n          \"is_active\": \"<boolean>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"allowed_groups\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"deployments\": [\n        {\n          \"cycles\": [\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"manager\",\n              \"stage\": \"post_cycle\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            },\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"matrix_manager\",\n              \"stage\": \"primary\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            }\n          ],\n          \"description\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"cycles\": [\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"manager\",\n              \"stage\": \"post_cycle\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            },\n            {\n              \"end\": \"<date>\",\n              \"grace_period_end\": \"<date>\",\n              \"id\": \"<integer>\",\n              \"lock_date\": \"<date>\",\n              \"lock_on_share\": \"<boolean>\",\n              \"review_end\": \"<date>\",\n              \"role\": \"matrix_manager\",\n              \"stage\": \"post_cycle\",\n              \"start\": \"<date>\",\n              \"submit_end\": \"<date>\",\n              \"uuid\": \"<uuid>\"\n            }\n          ],\n          \"description\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"hr_admin_permission\": \"no_access\",\n      \"hrq_enabled\": \"<boolean>\",\n      \"hrq_is_concurrent\": \"<boolean>\",\n      \"hrq_notification_on_due\": \"<boolean>\",\n      \"hrq_notification_on_start\": \"<boolean>\",\n      \"hrq_participants\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<integer>\",\n      \"is_goal_creation_enabled\": \"<boolean>\",\n      \"matrix_manager_can_see_direct_report_responses\": \"<boolean>\",\n      \"matrix_manager_can_see_responses\": \"<boolean>\",\n      \"matrix_manager_enabled\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"notification_midcycle_days\": \"<integer>\",\n      \"notification_on_end\": \"<boolean>\",\n      \"notification_on_start\": \"<boolean>\",\n      \"notification_overdue_days\": \"<integer>\",\n      \"only_managers_can_initiate\": \"<boolean>\",\n      \"participants\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"require_marked_as_met\": \"<boolean>\",\n      \"skip_level_managers_level\": \"none\",\n      \"skip_level_managers_permission\": \"can_only_view\",\n      \"super_admin_permission\": \"no_access\",\n      \"type\": \"adhoc\",\n      \"updated\": \"<float>\",\n      \"updated_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get conversation template",
+					"_postman_id": "e641e170-bf6a-4774-9a21-930caee92b9f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"templates",
+								":template_id",
+								""
+							],
+							"variable": [
+								{
+									"id": "ab1308ac-1f84-4784-aefe-2ee744991f6c",
+									"key": "template_id",
+									"value": "{{conversation_template_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Returns a conversation template.\n            <strong>This endpoint is only available to users with the admin or super admin role.</strong>"
+					},
+					"response": [
+						{
+							"id": "7e672955-8fef-4264-a525-54e810b93618",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"detail\": \"<string>\"\n}"
+						},
+						{
+							"id": "f1655eb8-dc5f-4f84-990b-c43ed772af47",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"allowed_employees\": [\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"allowed_groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"created\": \"<float>\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"created_on\": \"<dateTime>\",\n  \"deployments\": [\n    {\n      \"cycles\": [\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"cycles\": [\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"primary\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"hr_admin_permission\": \"no_access\",\n  \"hrq_enabled\": \"<boolean>\",\n  \"hrq_is_concurrent\": \"<boolean>\",\n  \"hrq_notification_on_due\": \"<boolean>\",\n  \"hrq_notification_on_start\": \"<boolean>\",\n  \"hrq_participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<integer>\",\n  \"is_goal_creation_enabled\": \"<boolean>\",\n  \"matrix_manager_can_see_direct_report_responses\": \"<boolean>\",\n  \"matrix_manager_can_see_responses\": \"<boolean>\",\n  \"matrix_manager_enabled\": \"<boolean>\",\n  \"modified_on\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"notification_midcycle_days\": \"<integer>\",\n  \"notification_on_end\": \"<boolean>\",\n  \"notification_on_start\": \"<boolean>\",\n  \"notification_overdue_days\": \"<integer>\",\n  \"only_managers_can_initiate\": \"<boolean>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"require_marked_as_met\": \"<boolean>\",\n  \"skip_level_managers_level\": \"any\",\n  \"skip_level_managers_permission\": \"no_access\",\n  \"super_admin_permission\": \"can_edit\",\n  \"type\": \"adhoc\",\n  \"updated\": \"<float>\",\n  \"updated_by\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"uuid\": \"<uuid>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get conversation template Copy",
+					"_postman_id": "36b81312-0b22-43db-847a-82ca4950db86",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"templates",
+								":template_id",
+								""
+							],
+							"variable": [
+								{
+									"id": "ab1308ac-1f84-4784-aefe-2ee744991f6c",
+									"key": "template_id",
+									"value": "{{conversation_template_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Returns a conversation template.\n            <strong>This endpoint is only available to users with the admin or super admin role.</strong>"
+					},
+					"response": [
+						{
+							"id": "6dd1b9c3-0383-4a58-819c-67ec8dc49e71",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"allowed_employees\": [\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"allowed_groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"created\": \"<float>\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"created_on\": \"<dateTime>\",\n  \"deployments\": [\n    {\n      \"cycles\": [\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"cycles\": [\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"post_cycle\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"end\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"lock_date\": \"<date>\",\n          \"lock_on_share\": \"<boolean>\",\n          \"review_end\": \"<date>\",\n          \"role\": \"matrix_manager\",\n          \"stage\": \"primary\",\n          \"start\": \"<date>\",\n          \"submit_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"hr_admin_permission\": \"no_access\",\n  \"hrq_enabled\": \"<boolean>\",\n  \"hrq_is_concurrent\": \"<boolean>\",\n  \"hrq_notification_on_due\": \"<boolean>\",\n  \"hrq_notification_on_start\": \"<boolean>\",\n  \"hrq_participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<integer>\",\n  \"is_goal_creation_enabled\": \"<boolean>\",\n  \"matrix_manager_can_see_direct_report_responses\": \"<boolean>\",\n  \"matrix_manager_can_see_responses\": \"<boolean>\",\n  \"matrix_manager_enabled\": \"<boolean>\",\n  \"modified_on\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"notification_midcycle_days\": \"<integer>\",\n  \"notification_on_end\": \"<boolean>\",\n  \"notification_on_start\": \"<boolean>\",\n  \"notification_overdue_days\": \"<integer>\",\n  \"only_managers_can_initiate\": \"<boolean>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"require_marked_as_met\": \"<boolean>\",\n  \"skip_level_managers_level\": \"any\",\n  \"skip_level_managers_permission\": \"no_access\",\n  \"super_admin_permission\": \"can_edit\",\n  \"type\": \"adhoc\",\n  \"updated\": \"<float>\",\n  \"updated_by\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"uuid\": \"<uuid>\"\n}"
+						},
+						{
+							"id": "fd082ca3-b2c6-4833-8529-9bab5c4ef37f",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/conversations/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"conversations",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"detail\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"_postman_id": "45021865-02b0-4f2d-9035-3a43f44b1223",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "01545232-d010-48f0-a617-51e8a0ab3a0e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "088a156f-564b-401e-82e7-9d69f548abdb",
+						"type": "text/javascript",
+						"exec": [
+							"// Test error handling by sending a request to a non-existent endpoint",
+							"",
+							"pm.sendRequest({",
+							"    url: \"http://rainforest.betterworks.com/api/v1/conversationss\",",
+							"    method: \"GET\",",
+							"    header: {",
+							"    Authorization : \"APIToken 992e9fdf44e54e089de823ea48d9a33a\"",
+							"    }",
+							"    ",
+							"}, function (err, response) {",
+							"    pm.test(\"Verify if status code is 404 incase of incorrect URL passed\", function () {",
+							"        pm.expect(response).to.have.status(404);",
+							"    });",
+							"});",
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"value": "{{Authorization}}",
+			"key": "Authorization"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d2e9f0f5-3e6f-4cf3-9280-a194b5118fb9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c3229f1e-7831-4ae6-a955-e541c045d17d",
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// Test the response code",
+					"pm.test(\"Verify if Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"// Test the content type",
+					"pm.test(\"Verify if Content type is JSON\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\", \"application/json\");",
+					"});",
+					"",
+					"// Test authentication by sending a request without credentials",
+					"pm.sendRequest({",
+					"    url: pm.request.url,",
+					"    method: \"GET\"",
+					"}, function (err, response) {",
+					"    pm.test(\"Verify if Authentication: status code is 401 if Auth token is not provided\", function () {",
+					"        pm.expect(response).to.have.status(401);",
+					"    });",
+					"});",
+					"",
+					"// Test authorization by sending credentials of non admin user",
+					"pm.sendRequest({",
+					"    url: pm.request.url,",
+					"    method: \"GET\",",
+					"    header: {",
+					"    Authorization : pm.environment.get(\"Manager_Auth\")",
+					"    }",
+					"}, function (err, response) {",
+					"    pm.test(\"Verify if Authorization: status code is 403 in case of non-admin user's id is passed\", function () {",
+					"        pm.expect(response).to.have.status(403);",
+					"    });",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "69175a63-e8d4-4464-a59b-65544171d9d2",
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "92e6eab9-0e99-4523-b21a-d1216da65dac",
+			"key": "userFirstName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "67ee446e-c017-4731-8517-0f5a15a1674d",
+			"key": "userSecondName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "be503c32-0f5e-42dd-9c0e-5cff2a957ced",
+			"key": "feedback_template_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "0e3c45fc-0290-4f89-aaef-10f95d542c4e",
+			"key": "feedback_for_user",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "b0a5691c-fd7f-4a37-b4f9-a2f42fb6d8a1",
+			"key": "feedback_requested_by",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
