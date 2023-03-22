@@ -1103,6 +1103,18 @@
 				},
 				{
 					"name": "Get a list of feedback requests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "118eefda-f5d6-4e79-a052-4b92c29a488e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "a5654612-66d4-4c4f-af4e-a7a5f6b4659f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1116,7 +1128,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/feedback/requests/?cycle=<integer>&declined=<boolean>&delta_end=<dateTime>&delta_start=<dateTime>&for_user=<integer>&from_user=<integer>&is_adhoc=<boolean>&is_open=<boolean>&page=<integer>&questions=false&size=<integer>",
+							"raw": "{{baseUrl}}/api/v1/feedback/requests/?for_user={{feedback_for_user}}&is_adhoc=true&page=1&questions=false&size=10",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1130,47 +1142,53 @@
 							"query": [
 								{
 									"key": "cycle",
-									"value": "<integer>",
-									"description": "The feedback cycle ID"
+									"value": "{{feedback_cycle_id}}",
+									"description": "The feedback cycle ID",
+									"disabled": true
 								},
 								{
 									"key": "declined",
 									"value": "<boolean>",
-									"description": "Filter on declined feedback requests"
+									"description": "Filter on declined feedback requests",
+									"disabled": true
 								},
 								{
 									"key": "delta_end",
 									"value": "<dateTime>",
-									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`"
+									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+									"disabled": true
 								},
 								{
 									"key": "delta_start",
 									"value": "<dateTime>",
-									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
+									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+									"disabled": true
 								},
 								{
 									"key": "for_user",
-									"value": "<integer>",
+									"value": "{{feedback_for_user}}",
 									"description": "The feedback recipient ID"
 								},
 								{
 									"key": "from_user",
 									"value": "<integer>",
-									"description": "The feedback provider ID"
+									"description": "The feedback provider ID",
+									"disabled": true
 								},
 								{
 									"key": "is_adhoc",
-									"value": "<boolean>",
+									"value": "true",
 									"description": "Filter on anytime feedback requests"
 								},
 								{
 									"key": "is_open",
 									"value": "<boolean>",
-									"description": "Filter on active feedback requests"
+									"description": "Filter on active feedback requests",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": "<integer>",
+									"value": "1",
 									"description": "Page number to return"
 								},
 								{
@@ -1180,7 +1198,7 @@
 								},
 								{
 									"key": "size",
-									"value": "<integer>",
+									"value": "10",
 									"description": "Number of items to return per page"
 								}
 							]
@@ -1930,32 +1948,32 @@
 	],
 	"variable": [
 		{
-			"id": "35a2e2ef-f29c-49e8-b237-301fd5029ab5",
+			"id": "3ef7a713-53f3-457b-895f-b5c7b252179a",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "52bee503-e1b0-483a-827b-fc327019b84a",
+			"id": "31d330fb-5ba3-4606-9c41-5e03e68c35a9",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "3382057a-8cc2-4190-b019-cdd0c8675baa",
+			"id": "2f0d62f4-7ee6-4444-8ca7-c4592a47d2ba",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "6807f5c2-6ca1-477c-bde8-30d7522b0e65",
+			"id": "2f3e9c4f-85b7-44a6-bb08-8534d4ed74b5",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "8ab204c4-6099-428f-a083-95e41dc805f2",
+			"id": "26cd557c-fec3-4bbb-8959-76b597e65e50",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "74ad590f-ce4b-4bc7-97e0-fc50dfe92dd3",
+			"id": "8147b4aa-9c4c-4be2-b36c-b968bd7d331f",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
