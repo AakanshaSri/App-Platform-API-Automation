@@ -1516,9 +1516,8 @@
 							],
 							"variable": [
 								{
-									"id": "358ffa0b-8700-4eef-8e60-3d8588689654",
 									"key": "template_id",
-									"value": "<integer>"
+									"value": "{{feedback_template_id}}"
 								}
 							]
 						},
@@ -1931,32 +1930,32 @@
 	],
 	"variable": [
 		{
-			"id": "269e9bcf-ed9f-429c-a28d-5ce6349d76bb",
+			"id": "35a2e2ef-f29c-49e8-b237-301fd5029ab5",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "492fef58-2750-4904-8421-7208f81dfb36",
+			"id": "52bee503-e1b0-483a-827b-fc327019b84a",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "5578af98-95c6-4aa0-a743-ec0e470fa970",
+			"id": "3382057a-8cc2-4190-b019-cdd0c8675baa",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "fb0cc064-50df-4566-b755-2ce5fcec5599",
+			"id": "6807f5c2-6ca1-477c-bde8-30d7522b0e65",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "b2b9cdfe-991e-4094-bb85-5722b09c3892",
+			"id": "8ab204c4-6099-428f-a083-95e41dc805f2",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "4f4138ed-d225-4554-aaae-212e2abfc469",
+			"id": "74ad590f-ce4b-4bc7-97e0-fc50dfe92dd3",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
