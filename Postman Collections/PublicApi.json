@@ -1627,7 +1627,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/employees?page=<integer>&size=<integer>",
+							"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/employees?page=1&size=10",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1642,20 +1642,19 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "<integer>",
+									"value": "1",
 									"description": "Page number to return"
 								},
 								{
 									"key": "size",
-									"value": "<integer>",
+									"value": "10",
 									"description": "Number of items to return per page"
 								}
 							],
 							"variable": [
 								{
-									"id": "ff759a25-53c2-4752-81bf-c416714e885c",
 									"key": "template_id",
-									"value": "<integer>"
+									"value": "{{feedback_template_id}}"
 								}
 							]
 						},
@@ -1932,32 +1931,32 @@
 	],
 	"variable": [
 		{
-			"id": "b0db275b-f803-42ce-a192-845a8a038fc9",
+			"id": "269e9bcf-ed9f-429c-a28d-5ce6349d76bb",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "078ad9d4-7a7c-46b8-83c8-cf02608c12fc",
+			"id": "492fef58-2750-4904-8421-7208f81dfb36",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "4ec53961-6336-4c42-bdd9-5d729d72731b",
+			"id": "5578af98-95c6-4aa0-a743-ec0e470fa970",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "fb698120-6411-420f-b242-3f7d4522141c",
+			"id": "fb0cc064-50df-4566-b755-2ce5fcec5599",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "f47d9433-0afd-4749-9f66-737361390eb5",
+			"id": "b2b9cdfe-991e-4094-bb85-5722b09c3892",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "566c85b9-0ac2-4a76-8c7b-a4d431d39162",
+			"id": "4f4138ed-d225-4554-aaae-212e2abfc469",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
