@@ -868,6 +868,1005 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "feedback",
+			"item": [
+				{
+					"name": "Get a list of feedback",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e8fe87b-09c7-4cc5-895a-7790eddbdc15",
+								"exec": [
+									"//Set collection veriabled from response",
+									"pm.test(\"Store values in collection variable\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"feedback_uuid\", jsonData.results[0].uuid)",
+									"    pm.environment.set(\"feedback_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"feedback_cycle_id\", jsonData.results[0].cycle_id);",
+									"    pm.environment.set(\"feedback_name\", jsonData.results[0].for_user[0].name);",
+									"    pm.environment.set(\"feedback_for_user_id\", jsonData.results[0].for_user[0].id);",
+									"    pm.environment.set(\"feedback_response_id\", jsonData.results[0].responses[0].id);",
+									"    pm.environment.set(\"feedback_response_ques_id\", jsonData.results[0].responses[0].question);",
+									"    pm.environment.set(\"feedback_id\", jsonData.results[0].responses[0].feedback_id);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "47945493-be44-401e-8b5c-f505447fdf32",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/?for_user_id={{feedback_for_user}}&page=1&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								""
+							],
+							"query": [
+								{
+									"key": "cycle_id",
+									"value": "<integer>",
+									"description": "The feedback cycle ID",
+									"disabled": true
+								},
+								{
+									"key": "delta_end",
+									"value": "<dateTime>",
+									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+									"disabled": true
+								},
+								{
+									"key": "delta_start",
+									"value": "<dateTime>",
+									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+									"disabled": true
+								},
+								{
+									"key": "for_user_id",
+									"value": "{{feedback_for_user}}",
+									"description": "The ID of the user that received feedback"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Number of items to return per page"
+								}
+							]
+						},
+						"description": "Returns a list of feedback. \n\n            \n The request must include `cycle_id` and/or `for_user_id`.\n            If `cycle_id`, all feedback related to that cycle id will be populated.\n            If `for_user_id`, all feedback related to that user id will be populated."
+					},
+					"response": [
+						{
+							"id": "86f5dd06-ac0e-4506-af63-763132058760",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/?cycle_id=<integer>&delta_end=<dateTime>&delta_start=<dateTime>&for_user_id=<integer>&page=<integer>&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										""
+									],
+									"query": [
+										{
+											"description": "The feedback cycle ID",
+											"key": "cycle_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"key": "delta_end",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"key": "delta_start",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "The ID of the user that received feedback",
+											"key": "for_user_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"cycle\": {\n        \"cycle_end\": \"<date>\",\n        \"cycle_start\": \"<date>\",\n        \"enable_anytime_nomination\": \"<boolean>\",\n        \"feedback_start\": \"<date>\",\n        \"grace_period_end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"selection_end\": \"<date>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"cycle_id\": \"<integer>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"for_user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"requested_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"responses\": {\n        \"answer\": \"<string>\",\n        \"feedback_id\": \"<integer>\",\n        \"hide_numbers\": \"<boolean>\",\n        \"id\": \"<integer>\",\n        \"question\": \"<string>\",\n        \"question_id\": \"<integer>\",\n        \"question_options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"question_uuid\": \"<uuid>\",\n        \"type\": \"multiple_choice\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"status\": \"answering\",\n      \"template_name\": \"<string>\",\n      \"template_type\": \"adhoc_manager_request_custom\",\n      \"updated\": \"<float>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"cycle\": {\n        \"cycle_end\": \"<date>\",\n        \"cycle_start\": \"<date>\",\n        \"enable_anytime_nomination\": \"<boolean>\",\n        \"feedback_start\": \"<date>\",\n        \"grace_period_end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"selection_end\": \"<date>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"cycle_id\": \"<integer>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"for_user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"requested_by\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"responses\": {\n        \"answer\": \"<string>\",\n        \"feedback_id\": \"<integer>\",\n        \"hide_numbers\": \"<boolean>\",\n        \"id\": \"<integer>\",\n        \"question\": \"<string>\",\n        \"question_id\": \"<integer>\",\n        \"question_options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"question_uuid\": \"<uuid>\",\n        \"type\": \"scale\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"status\": \"answering\",\n      \"template_name\": \"<string>\",\n      \"template_type\": \"adhoc_request_custom\",\n      \"updated\": \"<float>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "ae4ed8f1-11d3-4f1a-b837-e8d40ef14abc",
+							"name": "Request model validation error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/?cycle_id=<integer>&delta_end=<dateTime>&delta_start=<dateTime>&for_user_id=<integer>&page=<integer>&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										""
+									],
+									"query": [
+										{
+											"description": "The feedback cycle ID",
+											"key": "cycle_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"key": "delta_end",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"key": "delta_start",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "The ID of the user that received feedback",
+											"key": "for_user_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get a list of feedback requests",
+					"id": "a5654612-66d4-4c4f-af4e-a7a5f6b4659f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/requests/?cycle=<integer>&declined=<boolean>&delta_end=<dateTime>&delta_start=<dateTime>&for_user=<integer>&from_user=<integer>&is_adhoc=<boolean>&is_open=<boolean>&page=<integer>&questions=false&size=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								"requests",
+								""
+							],
+							"query": [
+								{
+									"key": "cycle",
+									"value": "<integer>",
+									"description": "The feedback cycle ID"
+								},
+								{
+									"key": "declined",
+									"value": "<boolean>",
+									"description": "Filter on declined feedback requests"
+								},
+								{
+									"key": "delta_end",
+									"value": "<dateTime>",
+									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`"
+								},
+								{
+									"key": "delta_start",
+									"value": "<dateTime>",
+									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
+								},
+								{
+									"key": "for_user",
+									"value": "<integer>",
+									"description": "The feedback recipient ID"
+								},
+								{
+									"key": "from_user",
+									"value": "<integer>",
+									"description": "The feedback provider ID"
+								},
+								{
+									"key": "is_adhoc",
+									"value": "<boolean>",
+									"description": "Filter on anytime feedback requests"
+								},
+								{
+									"key": "is_open",
+									"value": "<boolean>",
+									"description": "Filter on active feedback requests"
+								},
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "Page number to return"
+								},
+								{
+									"key": "questions",
+									"value": "false",
+									"description": "Include questions in feedback requests"
+								},
+								{
+									"key": "size",
+									"value": "<integer>",
+									"description": "Number of items to return per page"
+								}
+							]
+						},
+						"description": "Returns a list of feedback requests."
+					},
+					"response": [
+						{
+							"id": "b79b7565-0088-42e1-97fc-67ef9a12b870",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/requests/?cycle=<integer>&declined=<boolean>&delta_end=<dateTime>&delta_start=<dateTime>&for_user=<integer>&from_user=<integer>&is_adhoc=<boolean>&is_open=<boolean>&page=<integer>&questions=false&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"requests",
+										""
+									],
+									"query": [
+										{
+											"description": "The feedback cycle ID",
+											"key": "cycle",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter on declined feedback requests",
+											"key": "declined",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"key": "delta_end",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"key": "delta_start",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "The feedback recipient ID",
+											"key": "for_user",
+											"value": "<integer>"
+										},
+										{
+											"description": "The feedback provider ID",
+											"key": "from_user",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter on anytime feedback requests",
+											"key": "is_adhoc",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Filter on active feedback requests",
+											"key": "is_open",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Include questions in feedback requests",
+											"key": "questions",
+											"value": "false"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"adhoc_cycle\": {\n        \"end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"notification_reminder_date\": \"<date>\",\n        \"questions_locked\": \"<boolean>\",\n        \"start\": \"<date>\",\n        \"template_id\": \"<integer>\",\n        \"template_name\": \"<string>\",\n        \"template_questions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"can_view_feedback\": \"<boolean>\",\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"in__\": \"<string>\",\n          \"quis79\": \"<string>\",\n          \"quis_9\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"aliqua_bf7\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_note\": \"<string>\",\n      \"cycle\": {\n        \"cycle_end\": \"<date>\",\n        \"cycle_start\": \"<date>\",\n        \"enable_anytime_nomination\": \"<boolean>\",\n        \"feedback_start\": \"<date>\",\n        \"grace_period_end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"selection_end\": \"<date>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"decline_reason\": \"<string>\",\n      \"declined\": \"<float>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"expired\": \"<date>\",\n      \"feedback_id\": \"<integer>\",\n      \"feedback_uuid\": \"<uuid>\",\n      \"for_user\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"culpa_0e\": \"<string>\",\n          \"eu_4\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"amet0__\": \"<string>\",\n          \"utd\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"from_user\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"aliqua_9c0\": \"<string>\",\n          \"etf\": \"<string>\",\n          \"dolore_1\": \"<string>\",\n          \"est2\": \"<string>\",\n          \"qui_b\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"consequat9\": \"<string>\",\n          \"sintc4\": \"<string>\",\n          \"laborum_8\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"question\": \"<string>\",\n      \"questions\": [\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"scale\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"multiple_choice\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"requested_by\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"etd\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"Lorem_b\": \"<string>\",\n          \"in_0\": \"<string>\",\n          \"tempor_8a5\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"responses\": [\n        {\n          \"answer\": \"<string>\",\n          \"feedback_id\": \"<integer>\",\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"multiple_choice_answer\": \"<string>\",\n          \"options_answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"question_id\": \"<integer>\",\n          \"question_options\": \"<string>\",\n          \"rating\": \"<integer>\",\n          \"rating_range\": \"<integer>\",\n          \"type\": \"text\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"answer\": \"<string>\",\n          \"feedback_id\": \"<integer>\",\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"multiple_choice_answer\": \"<string>\",\n          \"options_answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"question_id\": \"<integer>\",\n          \"question_options\": \"<string>\",\n          \"rating\": \"<integer>\",\n          \"rating_range\": \"<integer>\",\n          \"type\": \"text\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"skip_level_can_view\": \"<boolean>\",\n      \"skip_level_managers_level\": \"any\",\n      \"skip_level_see_identity\": \"<boolean>\",\n      \"status\": \"declined\",\n      \"template_id\": \"<integer>\",\n      \"template_uuid\": \"<uuid>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"adhoc_cycle\": {\n        \"end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"notification_reminder_date\": \"<date>\",\n        \"questions_locked\": \"<boolean>\",\n        \"start\": \"<date>\",\n        \"template_id\": \"<integer>\",\n        \"template_name\": \"<string>\",\n        \"template_questions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"can_view_feedback\": \"<boolean>\",\n      \"created\": \"<float>\",\n      \"created_by\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"est_a\": \"<string>\",\n          \"enim_5\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"non89\": \"<string>\",\n          \"ex57f\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_note\": \"<string>\",\n      \"cycle\": {\n        \"cycle_end\": \"<date>\",\n        \"cycle_start\": \"<date>\",\n        \"enable_anytime_nomination\": \"<boolean>\",\n        \"feedback_start\": \"<date>\",\n        \"grace_period_end\": \"<date>\",\n        \"id\": \"<integer>\",\n        \"selection_end\": \"<date>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"decline_reason\": \"<string>\",\n      \"declined\": \"<float>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"expired\": \"<date>\",\n      \"feedback_id\": \"<integer>\",\n      \"feedback_uuid\": \"<uuid>\",\n      \"for_user\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"aute_7e\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"velitb2\": \"<string>\",\n          \"ut_77e\": \"<string>\",\n          \"pariatur_5e5\": \"<string>\",\n          \"Excepteurfa8\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"from_user\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"irure_404\": \"<string>\",\n          \"voluptate_9\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"magna1b\": \"<string>\",\n          \"occaecat_d_\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"question\": \"<string>\",\n      \"questions\": [\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"text\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"multiple_choice\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"requested_by\": {\n        \"about\": \"<string>\",\n        \"attributes\": {\n          \"ipsumdaf\": \"<string>\"\n        },\n        \"created_on\": \"<dateTime>\",\n        \"custom_values\": {\n          \"quifc\": \"<string>\",\n          \"qui_2\": \"<string>\"\n        },\n        \"deactivated_on\": \"<dateTime>\",\n        \"deactivation_date\": \"<date>\",\n        \"department\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"email\": \"<email>\",\n        \"employee_id\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"is_admin\": \"<boolean>\",\n        \"is_goalmaster\": \"<boolean>\",\n        \"is_group_admin\": \"<boolean>\",\n        \"is_super_admin\": \"<boolean>\",\n        \"last_name\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"manager\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        \"modified_on\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"preferred_name\": \"<string>\",\n        \"title\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"responses\": [\n        {\n          \"answer\": \"<string>\",\n          \"feedback_id\": \"<integer>\",\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"multiple_choice_answer\": \"<string>\",\n          \"options_answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"question_id\": \"<integer>\",\n          \"question_options\": \"<string>\",\n          \"rating\": \"<integer>\",\n          \"rating_range\": \"<integer>\",\n          \"type\": \"scale\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"answer\": \"<string>\",\n          \"feedback_id\": \"<integer>\",\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"multiple_choice_answer\": \"<string>\",\n          \"options_answer\": \"<string>\",\n          \"question\": \"<string>\",\n          \"question_id\": \"<integer>\",\n          \"question_options\": \"<string>\",\n          \"rating\": \"<integer>\",\n          \"rating_range\": \"<integer>\",\n          \"type\": \"text\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"skip_level_can_view\": \"<boolean>\",\n      \"skip_level_managers_level\": \"none\",\n      \"skip_level_see_identity\": \"<boolean>\",\n      \"status\": \"answering\",\n      \"template_id\": \"<integer>\",\n      \"template_uuid\": \"<uuid>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "074f1179-1ba1-4375-a557-614dd5c69ead",
+							"name": "Request model validation error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/requests/?cycle=<integer>&declined=<boolean>&delta_end=<dateTime>&delta_start=<dateTime>&for_user=<integer>&from_user=<integer>&is_adhoc=<boolean>&is_open=<boolean>&page=<integer>&questions=false&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"requests",
+										""
+									],
+									"query": [
+										{
+											"description": "The feedback cycle ID",
+											"key": "cycle",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter on declined feedback requests",
+											"key": "declined",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"key": "delta_end",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"key": "delta_start",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "The feedback recipient ID",
+											"key": "for_user",
+											"value": "<integer>"
+										},
+										{
+											"description": "The feedback provider ID",
+											"key": "from_user",
+											"value": "<integer>"
+										},
+										{
+											"description": "Filter on anytime feedback requests",
+											"key": "is_adhoc",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Filter on active feedback requests",
+											"key": "is_open",
+											"value": "<boolean>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Include questions in feedback requests",
+											"key": "questions",
+											"value": "false"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get a list of feedback templates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8618f25-4866-46a8-9715-dfebd9e5fd5a",
+								"exec": [
+									"//Set collection veriabled from response",
+									"pm.test(\"Store values in collection variable\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"feedback_template_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"feedback_template_name\", jsonData.results[0].name);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d098077e-3559-4280-841a-0f034cf70ea9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/templates/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								"templates",
+								""
+							],
+							"variable": [
+								{
+									"key": "template_id",
+									"value": "{{feedback_template_id}}",
+									"description": "(Required) The feedback template ID"
+								}
+							]
+						},
+						"description": "Returns a list of feedback templates."
+					},
+					"response": [
+						{
+							"id": "87eb14c3-8c8c-4fff-86c5-c1446cf8276c",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": "{{baseUrl}}/api/v1/feedback/templates/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"allowed_employees\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"allowed_providers\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_on\": \"<dateTime>\",\n      \"custom_note_enabled\": \"<boolean>\",\n      \"cycles\": [\n        {\n          \"cycle_end\": \"<date>\",\n          \"cycle_start\": \"<date>\",\n          \"enable_anytime_nomination\": \"<boolean>\",\n          \"feedback_start\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"selection_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"cycle_end\": \"<date>\",\n          \"cycle_start\": \"<date>\",\n          \"enable_anytime_nomination\": \"<boolean>\",\n          \"feedback_start\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"selection_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"default_provider_type\": \"classic_360\",\n      \"default_providers_includes_directs\": \"<boolean>\",\n      \"default_providers_includes_manager\": \"<boolean>\",\n      \"default_providers_includes_peers\": \"<boolean>\",\n      \"default_providers_limit\": \"<integer>\",\n      \"employee_can_choose\": \"<boolean>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_choose\": \"<boolean>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"notify_cycle_started\": \"<boolean>\",\n      \"notify_feedback_reminder\": \"<boolean>\",\n      \"notify_feedback_requested\": \"<boolean>\",\n      \"questions\": [\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"scale\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"multiple_choice\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"questions_locked\": \"<boolean>\",\n      \"skip_level_can_view\": \"<boolean>\",\n      \"skip_level_managers_level\": \"one\",\n      \"skip_level_see_identity\": \"<boolean>\",\n      \"summary_visible_employee\": \"<boolean>\",\n      \"summary_visible_manager\": \"<boolean>\",\n      \"type\": \"adhoc_request\",\n      \"updated\": \"<float>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"allowed_employees\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"allowed_providers\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"created\": \"<float>\",\n      \"created_on\": \"<dateTime>\",\n      \"custom_note_enabled\": \"<boolean>\",\n      \"cycles\": [\n        {\n          \"cycle_end\": \"<date>\",\n          \"cycle_start\": \"<date>\",\n          \"enable_anytime_nomination\": \"<boolean>\",\n          \"feedback_start\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"selection_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"cycle_end\": \"<date>\",\n          \"cycle_start\": \"<date>\",\n          \"enable_anytime_nomination\": \"<boolean>\",\n          \"feedback_start\": \"<date>\",\n          \"grace_period_end\": \"<date>\",\n          \"id\": \"<integer>\",\n          \"selection_end\": \"<date>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"default_provider_type\": \"classic_360\",\n      \"default_providers_includes_directs\": \"<boolean>\",\n      \"default_providers_includes_manager\": \"<boolean>\",\n      \"default_providers_includes_peers\": \"<boolean>\",\n      \"default_providers_limit\": \"<integer>\",\n      \"employee_can_choose\": \"<boolean>\",\n      \"employee_can_view\": \"<boolean>\",\n      \"employee_see_identity\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"hold_feedback\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"manager_can_choose\": \"<boolean>\",\n      \"manager_can_view\": \"<boolean>\",\n      \"manager_see_identity\": \"<boolean>\",\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"notify_cycle_started\": \"<boolean>\",\n      \"notify_feedback_reminder\": \"<boolean>\",\n      \"notify_feedback_requested\": \"<boolean>\",\n      \"questions\": [\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"scale\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"hide_numbers\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"mandatory\": \"<boolean>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"order\": \"<integer>\",\n          \"template_id\": \"<integer>\",\n          \"text\": \"<string>\",\n          \"type\": \"text\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"questions_locked\": \"<boolean>\",\n      \"skip_level_can_view\": \"<boolean>\",\n      \"skip_level_managers_level\": \"none\",\n      \"skip_level_see_identity\": \"<boolean>\",\n      \"summary_visible_employee\": \"<boolean>\",\n      \"summary_visible_manager\": \"<boolean>\",\n      \"type\": \"scheduled\",\n      \"updated\": \"<float>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "c3f8aac9-5804-4df5-b51e-0644fbb412c0",
+							"name": "Request model validation error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": "{{baseUrl}}/api/v1/feedback/templates/"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get a feedback template",
+					"id": "764a513a-09e1-4497-8042-8c5fde7f2642",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								"templates",
+								":template_id",
+								""
+							],
+							"variable": [
+								{
+									"id": "358ffa0b-8700-4eef-8e60-3d8588689654",
+									"key": "template_id",
+									"value": "<integer>"
+								}
+							]
+						},
+						"description": "Returns a feedback template."
+					},
+					"response": [
+						{
+							"id": "79461f67-a3f3-462c-a0e7-ae5beffa8c19",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"allowed_employees\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"allowed_providers\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"created\": \"<float>\",\n  \"created_on\": \"<dateTime>\",\n  \"custom_note_enabled\": \"<boolean>\",\n  \"cycles\": [\n    {\n      \"cycle_end\": \"<date>\",\n      \"cycle_start\": \"<date>\",\n      \"enable_anytime_nomination\": \"<boolean>\",\n      \"feedback_start\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"selection_end\": \"<date>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"cycle_end\": \"<date>\",\n      \"cycle_start\": \"<date>\",\n      \"enable_anytime_nomination\": \"<boolean>\",\n      \"feedback_start\": \"<date>\",\n      \"grace_period_end\": \"<date>\",\n      \"id\": \"<integer>\",\n      \"selection_end\": \"<date>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"default_provider_type\": \"classic_360\",\n  \"default_providers_includes_directs\": \"<boolean>\",\n  \"default_providers_includes_manager\": \"<boolean>\",\n  \"default_providers_includes_peers\": \"<boolean>\",\n  \"default_providers_limit\": \"<integer>\",\n  \"employee_can_choose\": \"<boolean>\",\n  \"employee_can_view\": \"<boolean>\",\n  \"employee_see_identity\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"hold_feedback\": \"<boolean>\",\n  \"id\": \"<integer>\",\n  \"manager_can_choose\": \"<boolean>\",\n  \"manager_can_view\": \"<boolean>\",\n  \"manager_see_identity\": \"<boolean>\",\n  \"modified_on\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"notify_cycle_started\": \"<boolean>\",\n  \"notify_feedback_reminder\": \"<boolean>\",\n  \"notify_feedback_requested\": \"<boolean>\",\n  \"questions\": [\n    {\n      \"hide_numbers\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"mandatory\": \"<boolean>\",\n      \"options\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"order\": \"<integer>\",\n      \"template_id\": \"<integer>\",\n      \"text\": \"<string>\",\n      \"type\": \"scale\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"hide_numbers\": \"<boolean>\",\n      \"id\": \"<integer>\",\n      \"mandatory\": \"<boolean>\",\n      \"options\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"order\": \"<integer>\",\n      \"template_id\": \"<integer>\",\n      \"text\": \"<string>\",\n      \"type\": \"scale\",\n      \"uuid\": \"<uuid>\"\n    }\n  ],\n  \"questions_locked\": \"<boolean>\",\n  \"skip_level_can_view\": \"<boolean>\",\n  \"skip_level_managers_level\": \"none\",\n  \"skip_level_see_identity\": \"<boolean>\",\n  \"summary_visible_employee\": \"<boolean>\",\n  \"summary_visible_manager\": \"<boolean>\",\n  \"type\": \"scheduled\",\n  \"updated\": \"<float>\",\n  \"uuid\": \"<uuid>\"\n}"
+						},
+						{
+							"id": "e7752150-ff56-4684-b632-7fdc2f11bb86",
+							"name": "Request model validation error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"templates",
+										":template_id",
+										""
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get a list of employees",
+					"id": "ab78c720-7080-4b1d-aeb0-746b435f09d6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/employees?page=<integer>&size=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								"templates",
+								":template_id",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "<integer>",
+									"description": "Number of items to return per page"
+								}
+							],
+							"variable": [
+								{
+									"id": "ff759a25-53c2-4752-81bf-c416714e885c",
+									"key": "template_id",
+									"value": "<integer>"
+								}
+							]
+						},
+						"description": "Returns a list of employees associated with a feedback template."
+					},
+					"response": [
+						{
+							"id": "e6b43e2e-a182-46cc-8588-0770a8678e0c",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/employees?page=<integer>&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"templates",
+										":template_id",
+										"employees"
+									],
+									"query": [
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a list of providers",
+					"id": "889f4b07-a48a-4013-b95f-be1825a7675a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/providers?page=1&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"feedback",
+								"templates",
+								":template_id",
+								"providers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Number of items to return per page"
+								}
+							],
+							"variable": [
+								{
+									"key": "template_id",
+									"value": "{{feedback_template_id}}"
+								}
+							]
+						},
+						"description": "Returns a list of providers associated with a feedback template."
+					},
+					"response": [
+						{
+							"id": "271e13f7-a5cb-4876-b0a5-e909f1e28bc1",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/feedback/templates/:template_id/providers?page=<integer>&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"feedback",
+										"templates",
+										":template_id",
+										"providers"
+									],
+									"query": [
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									],
+									"variable": [
+										{
+											"key": "template_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			],
+			"id": "85cc82e1-4f93-4d42-9b36-b2e8283796e8",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "257c95a7-94dd-40ff-a724-29b54b9beb21",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe7685aa-60e7-41d2-ad73-9392626e1094",
+						"type": "text/javascript",
+						"exec": [
+							"// Test error handling by sending a request to a non-existent endpoint",
+							"",
+							"pm.sendRequest({",
+							"    url: \"http://rainforest.betterworks.com/api/v1/feedbackss\",",
+							"    method: \"GET\",",
+							"    header: {",
+							"    Authorization : \"APIToken 992e9fdf44e54e089de823ea48d9a33a\"",
+							"    }",
+							"    ",
+							"}, function (err, response) {",
+							"    pm.test(\"Error handling: status code is 404\", function () {",
+							"        pm.expect(response).to.have.status(404);",
+							"    });",
+							"});",
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"auth": {
@@ -933,32 +1932,32 @@
 	],
 	"variable": [
 		{
-			"id": "02d594bb-d3ba-4957-bf02-c5637eafd5b7",
+			"id": "b0db275b-f803-42ce-a192-845a8a038fc9",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "b15a93df-9750-42e0-a44d-3edb4a7137c0",
+			"id": "078ad9d4-7a7c-46b8-83c8-cf02608c12fc",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "49e0bb36-fdf7-4ad3-8347-09c74d09cae8",
+			"id": "4ec53961-6336-4c42-bdd9-5d729d72731b",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "8ec14f91-6d65-468e-be98-bda8e16d21cf",
+			"id": "fb698120-6411-420f-b242-3f7d4522141c",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "c6f2f0a2-c73e-486c-a5e1-84d89e5c89aa",
+			"id": "f47d9433-0afd-4749-9f66-737361390eb5",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "4ba24987-de9c-49a1-a5c7-2a47012fab5d",
+			"id": "566c85b9-0ac2-4a76-8c7b-a4d431d39162",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
