@@ -2438,149 +2438,6 @@
 					]
 				},
 				{
-					"name": "Search for users",
-					"id": "15186454-ce4d-4ca1-8442-5f3c8d979915",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"key": "Authorization",
-								"value": "{{apiKey}}",
-								"in": "header"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/search/?can_view_goal_id=<integer>&deactivated=false&feedback_cycle_id=<integer>&manager_id=<integer>&q=<string>&stats=<boolean>",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"search",
-								""
-							],
-							"query": [
-								{
-									"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
-									"key": "can_view_goal_id",
-									"value": "<integer>"
-								},
-								{
-									"description": "Search for users that are deactivated",
-									"key": "deactivated",
-									"value": "false"
-								},
-								{
-									"description": "Append the number of feedback requests per user in a given cycle.",
-									"key": "feedback_cycle_id",
-									"value": "<integer>"
-								},
-								{
-									"description": "Search for users by their manager&#39;s ID",
-									"key": "manager_id",
-									"value": "<integer>"
-								},
-								{
-									"description": "(Required) Query string matching user&#39;s full name or email",
-									"key": "q",
-									"value": "<string>"
-								},
-								{
-									"description": "Append goal statistics to each user in the response.",
-									"key": "stats",
-									"value": "<boolean>"
-								}
-							]
-						},
-						"description": "Returns a list of users matching the search criteria.\n            <strong>Matches on full name and username.</strong>"
-					},
-					"response": [
-						{
-							"id": "6671a5ee-a9bc-48ce-acb2-b9463390cf95",
-							"name": "Successful response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "Authorization",
-										"value": "<API Key>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/users/search/?can_view_goal_id=<integer>&deactivated=false&feedback_cycle_id=<integer>&manager_id=<integer>&q=<string>&stats=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"users",
-										"search",
-										""
-									],
-									"query": [
-										{
-											"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
-											"key": "can_view_goal_id",
-											"value": "<integer>"
-										},
-										{
-											"description": "Search for users that are deactivated",
-											"key": "deactivated",
-											"value": "false"
-										},
-										{
-											"description": "Append the number of feedback requests per user in a given cycle.",
-											"key": "feedback_cycle_id",
-											"value": "<integer>"
-										},
-										{
-											"description": "Search for users by their manager&#39;s ID",
-											"key": "manager_id",
-											"value": "<integer>"
-										},
-										{
-											"description": "(Required) Query string matching user&#39;s full name or email",
-											"key": "q",
-											"value": "<string>"
-										},
-										{
-											"description": "Append goal statistics to each user in the response.",
-											"key": "stats",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"est2\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"occaecat_e3\": \"<string>\",\n        \"veniam_d2\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"eiusmod54\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"in_d60\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
-						}
-					]
-				},
-				{
 					"name": "Get a user",
 					"event": [
 						{
@@ -3092,32 +2949,32 @@
 	],
 	"variable": [
 		{
-			"id": "fd0ed434-e547-4cd7-93b2-9f8fc16894d7",
+			"id": "a59d628f-ddf6-48be-9900-400614a0e4c9",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "f9eb9e0c-4c4c-485f-8ff3-16ba4e1e136b",
+			"id": "928bfc5c-d9b5-4261-90ed-c2f8312fb74e",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "817c0315-27ec-4082-8f60-e4c28a4fda57",
+			"id": "9022bda0-0b8f-4050-a37b-14cd9a26f6c8",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "9f2ed2e6-1de0-4907-b8d4-c6f417a05341",
+			"id": "d302c74a-5121-4b12-8bc3-3887ee2be054",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "3e5b9d3e-a328-44d5-a5a5-f9da54d76964",
+			"id": "1fa22bcf-1303-41b2-9253-f73222bd3df9",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "8012aa0a-7299-483b-90fa-b54c2abf1492",
+			"id": "fd2a913a-dd33-42fb-b976-fcef4c422736",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
