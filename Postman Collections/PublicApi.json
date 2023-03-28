@@ -2902,7 +2902,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "dd188513-2ba6-4713-96a0-94c1a8932000",
+						"id": "053e26a3-b809-49e4-a5e6-cf499c013e28",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2912,7 +2912,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "10d3deca-7665-40fc-9210-496bd69ed8f6",
+						"id": "b163f26f-2ccf-4bfd-a9a0-15a0647e1d12",
 						"type": "text/javascript",
 						"exec": [
 							"// Test error handling by sending a request to a non-existent endpoint",
@@ -2921,7 +2921,7 @@
 							"    url: \"http://rainforest.betterworks.com/api/v1/users\",",
 							"    method: \"GET\",",
 							"    header: {",
-							"    Authorization : \"APIToken 992e9fdf44e54e089de823ea48d9a33a\"",
+							"    Authorization : \"{{Authorization}}\"",
 							"    }",
 							"    ",
 							"}, function (err, response) {",
@@ -2999,32 +2999,32 @@
 	],
 	"variable": [
 		{
-			"id": "4306317b-be68-4107-a041-6c6ca605e0cc",
+			"id": "1f66332d-e1b2-4a05-a848-d8534ebf6ab1",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "b710397b-3483-4896-bd0a-5bbce4705b99",
+			"id": "b5bd6622-41f4-4352-aea5-052ae71561cc",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "484c1cdc-ad42-4f85-869c-5bc3fe7fd114",
+			"id": "c71e9ee3-e7d0-4058-90e2-545ee5ed98d4",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "e76557ee-0c7d-4338-b559-e7e1516fb077",
+			"id": "1fdbf346-ba9f-42a9-8eb0-695459483cb8",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "e37c2032-1715-440e-ba1c-87aa3f14e3ae",
+			"id": "256e4175-5857-47d1-be81-30202637351f",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "46fafdb0-93a8-404c-89f9-f47fba4601d6",
+			"id": "8f588308-c25e-4bed-9804-f57ed02a2307",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
