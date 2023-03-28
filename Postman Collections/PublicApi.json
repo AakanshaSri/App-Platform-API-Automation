@@ -2430,23 +2430,28 @@
 								"id": "3dd8fa04-b3af-4b3c-b9b2-1e36de3c3168",
 								"exec": [
 									"// Test the response body",
-									"pm.test(\"Response body is valid\", function () {",
+									"pm.test(\"Verify if all 5 user's First name, Last name and email is correct\", function () {",
 									"    var jsonData = pm.response.json();",
 									" ",
 									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
 									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
+									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
 									"",
 									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
 									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
+									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
 									"",
-									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
-									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
+									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
 									"",
-									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
-									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
+									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
 									"",
-									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
-									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
+									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
 									"",
 									"    ",
 									"",
@@ -2537,8 +2542,7 @@
 								},
 								{
 									"key": "user_id",
-									"value": "{{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}",
-									"type": "text"
+									"value": "{{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}"
 								}
 							]
 						},
@@ -3017,57 +3021,57 @@
 	],
 	"variable": [
 		{
-			"id": "7b5ad6b1-b064-4c51-b525-4c1b9b39603b",
+			"id": "dd62a7b4-3b95-4240-99c0-c920ffdae31c",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "2055e4df-c535-4ced-843a-224440eec3d9",
+			"id": "991374ce-852d-4d35-a789-3aedb18de8d5",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "5d984610-201f-41b7-a542-5762c36aba2e",
+			"id": "8e171900-6f2a-4318-94b7-ac2a39086e2e",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "47db1f44-6091-44b9-9146-a4ce881264a9",
+			"id": "3b2ed5ec-786e-4d46-8aba-3bf647945cab",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "257118a5-b768-4357-a732-f6017350aa2f",
+			"id": "c00bdd6d-d726-4d3c-95b9-ee394a20a9d7",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "58df517f-ee2b-4371-867c-af7369a7186b",
+			"id": "83b8a031-9afa-48d4-ae30-2eb18a5886d3",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "cb7379b9-b6b3-4912-afcc-5bbba5110a8b",
+			"id": "3e11e4f4-7925-4e9e-9bf4-0b566a49dc0d",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "0e27e950-be74-4ddc-89b7-57aaa0c38099",
+			"id": "af921b37-2b48-44d5-b480-7bc5e4e110ca",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "43015442-9384-448d-9583-d0e3dcde9909",
+			"id": "197d0b04-7836-4801-8959-dfad4f71894c",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "12724ca2-638d-4b93-921f-c90b2f7edcb7",
+			"id": "5075b9dd-131e-48c5-a9a6-751a92da64cc",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "6c17c321-e2ec-4ead-b665-6ef908d39421",
+			"id": "118eb5ae-6515-4f33-b41f-7229b93ab75a",
 			"key": "user_id5",
 			"value": ""
 		}
