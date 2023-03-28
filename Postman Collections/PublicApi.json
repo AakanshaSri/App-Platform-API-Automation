@@ -2292,10 +2292,31 @@
 									"pm.test(\"Store values in collection variable\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.environment.set(\"user_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"userFirstName\", jsonData.results[0].first_name);",
+									"    pm.environment.set(\"userLastName\", jsonData.results[0].last_name);",
+									"    pm.environment.set(\"userEmail\", jsonData.results[0].email);",
+									"",
+									"    ",
 									"    pm.environment.set(\"user_id2\", jsonData.results[1].id);",
+									"    pm.environment.set(\"userFirstName2\", jsonData.results[1].first_name);",
+									"    pm.environment.set(\"userLastName2\", jsonData.results[1].last_name);",
+									"    pm.environment.set(\"userEmail2\", jsonData.results[1].email);",
+									"",
 									"    pm.environment.set(\"user_id3\", jsonData.results[2].id);",
+									"    pm.environment.set(\"userFirstName3\", jsonData.results[2].first_name);",
+									"    pm.environment.set(\"userLastName3\", jsonData.results[2].last_name);",
+									"    pm.environment.set(\"userEmail3\", jsonData.results[2].email);",
+									"",
 									"    pm.environment.set(\"user_id4\", jsonData.results[3].id);",
+									"    pm.environment.set(\"userFirstName4\", jsonData.results[3].first_name);",
+									"    pm.environment.set(\"userLastName4\", jsonData.results[3].last_name);",
+									"    pm.environment.set(\"userEmail4\", jsonData.results[3].email);",
+									"",
 									"    pm.environment.set(\"user_id5\", jsonData.results[4].id);",
+									"    pm.environment.set(\"userFirstName5\", jsonData.results[4].first_name);",
+									"    pm.environment.set(\"userLastName5\", jsonData.results[4].last_name);",
+									"    pm.environment.set(\"userEmail5\", jsonData.results[4].email);",
+									"",
 									"});",
 									""
 								],
@@ -2953,57 +2974,57 @@
 	],
 	"variable": [
 		{
-			"id": "f840a960-cc0a-48a7-a466-a76e088af61e",
+			"id": "da047913-33ad-425e-97c6-e290e6ae54ba",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "729a0c4c-10e1-4758-afc2-67eb938e15cb",
+			"id": "7abfec43-f217-4f8e-94bf-c86a3d55c19f",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "edb08f51-0211-42b2-aea9-7df8376ed56a",
+			"id": "251f9d24-df02-4cef-8160-26ff1df1a8e5",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "1b8bc089-5995-4081-b59f-8d4fb40cd5cb",
+			"id": "bd47766a-57f3-4433-9cb7-d03b843e57d8",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "7cb6c5b7-375a-4e42-8904-8703720086f5",
+			"id": "814ec05c-0193-42c0-a019-c569bc7e8296",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "f7b7e7aa-f589-4637-bd7b-6497b448451d",
+			"id": "f93d0fc8-5d67-4cfd-bd02-803af22dfa1c",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "bedab997-85f4-4e5b-9dc0-6600cb092437",
+			"id": "c350a000-72c2-4bc9-8cc0-2b892ccee279",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "9bd571b1-2984-4ada-94b9-3631cf08a648",
+			"id": "0bb70ea2-12ca-4536-8c2d-e561375edc03",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "0a5dac59-7eb1-4ffd-89ca-23b785f49cd3",
+			"id": "1919cb85-7952-47d3-ac1f-08e91e043444",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "82d1136f-0bca-4e0f-8b56-c797e3229777",
+			"id": "cd1f10be-80d3-46aa-beca-226a8009f315",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "aa6a7066-4c0b-4822-87b1-e7b62a9debdd",
+			"id": "08ace135-52bd-4d64-83de-47406940b927",
 			"key": "user_id5",
 			"value": ""
 		}
