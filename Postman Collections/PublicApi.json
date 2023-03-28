@@ -2113,174 +2113,6 @@
 					]
 				},
 				{
-					"name": "Get a list of users",
-					"id": "4c9fcb45-dd35-48ab-b3ed-af09c3b57cc6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?delta_end={{conversation_delta_end}}&delta_start={{conversation_delta_start}}&page=1&size=1000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								""
-							],
-							"query": [
-								{
-									"key": "deactivated",
-									"value": "1",
-									"description": "Filter users by active status - 0 for active users, 1 for deactivated users",
-									"disabled": true
-								},
-								{
-									"key": "delta_end",
-									"value": "{{conversation_delta_end}}",
-									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`"
-								},
-								{
-									"key": "delta_start",
-									"value": "{{conversation_delta_start}}",
-									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
-								},
-								{
-									"key": "department",
-									"value": "<string>",
-									"description": "Filter users by department name",
-									"disabled": true
-								},
-								{
-									"key": "employee_id",
-									"value": "<string>",
-									"description": "Filter users by employee ID",
-									"disabled": true
-								},
-								{
-									"key": "locale",
-									"value": "hr",
-									"description": "Filter users by locale",
-									"disabled": true
-								},
-								{
-									"key": "manager",
-									"value": "<integer>",
-									"description": "Filter users by manager ID",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "1",
-									"description": "Page number to return"
-								},
-								{
-									"key": "size",
-									"value": "1000",
-									"description": "Number of items to return per page"
-								}
-							]
-						},
-						"description": "Returns a list of users."
-					},
-					"response": [
-						{
-							"id": "f5bed188-9698-4945-a714-6a5216891b82",
-							"name": "Successful response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "Authorization",
-										"value": "<API Key>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/users/?deactivated=1&delta_end=<dateTime>&delta_start=<dateTime>&department=<string>&employee_id=<string>&locale=hr&manager=<integer>&page=<integer>&size=<integer>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"users",
-										""
-									],
-									"query": [
-										{
-											"description": "Filter users by active status - 0 for active users, 1 for deactivated users",
-											"key": "deactivated",
-											"value": "1"
-										},
-										{
-											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
-											"key": "delta_end",
-											"value": "<dateTime>"
-										},
-										{
-											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
-											"key": "delta_start",
-											"value": "<dateTime>"
-										},
-										{
-											"description": "Filter users by department name",
-											"key": "department",
-											"value": "<string>"
-										},
-										{
-											"description": "Filter users by employee ID",
-											"key": "employee_id",
-											"value": "<string>"
-										},
-										{
-											"description": "Filter users by locale",
-											"key": "locale",
-											"value": "hr"
-										},
-										{
-											"description": "Filter users by manager ID",
-											"key": "manager",
-											"value": "<integer>"
-										},
-										{
-											"description": "Page number to return",
-											"key": "page",
-											"value": "<integer>"
-										},
-										{
-											"description": "Number of items to return per page",
-											"key": "size",
-											"value": "<integer>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"est2\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"occaecat_e3\": \"<string>\",\n        \"veniam_d2\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"eiusmod54\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"in_d60\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
-						}
-					]
-				},
-				{
 					"name": "Search for users",
 					"event": [
 						{
@@ -2586,6 +2418,217 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n  \"about\": \"<string>\",\n  \"attributes\": {\n    \"eiusmod__2\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"minim_f6\": \"<string>\"\n  },\n  \"created_on\": \"<dateTime>\",\n  \"custom_values\": {\n    \"elit_68\": \"<string>\",\n    \"reprehenderit_94f\": \"<string>\"\n  },\n  \"deactivated_on\": \"<dateTime>\",\n  \"deactivation_date\": \"<date>\",\n  \"department\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"is_active\": \"<boolean>\",\n  \"is_admin\": \"<boolean>\",\n  \"is_goalmaster\": \"<boolean>\",\n  \"is_group_admin\": \"<boolean>\",\n  \"is_super_admin\": \"<boolean>\",\n  \"last_name\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"manager\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"uuid\": \"<uuid>\"\n  },\n  \"modified_on\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"preferred_name\": \"<string>\",\n  \"title\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a list of users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3dd8fa04-b3af-4b3c-b9b2-1e36de3c3168",
+								"exec": [
+									"// Test the response body",
+									"pm.test(\"Response body is valid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" ",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
+									"",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
+									"",
+									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
+									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
+									"",
+									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
+									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
+									"",
+									"    // pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
+									"    // pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
+									"",
+									"    ",
+									"",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "4c9fcb45-dd35-48ab-b3ed-af09c3b57cc6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/users/?delta_start=2023-03-28&page=1&size=1000&user_id={{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "deactivated",
+									"value": "1",
+									"description": "Filter users by active status - 0 for active users, 1 for deactivated users",
+									"disabled": true
+								},
+								{
+									"key": "delta_end",
+									"value": "{{conversation_delta_end}}",
+									"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+									"disabled": true
+								},
+								{
+									"key": "delta_start",
+									"value": "2023-03-28",
+									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
+								},
+								{
+									"key": "department",
+									"value": "<string>",
+									"description": "Filter users by department name",
+									"disabled": true
+								},
+								{
+									"key": "employee_id",
+									"value": "123,2133",
+									"description": "Filter users by employee ID",
+									"disabled": true
+								},
+								{
+									"key": "locale",
+									"value": "hr",
+									"description": "Filter users by locale",
+									"disabled": true
+								},
+								{
+									"key": "manager",
+									"value": "<integer>",
+									"description": "Filter users by manager ID",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "1000",
+									"description": "Number of items to return per page"
+								},
+								{
+									"key": "user_id",
+									"value": "{{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Returns a list of users."
+					},
+					"response": [
+						{
+							"id": "f5bed188-9698-4945-a714-6a5216891b82",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/?deactivated=1&delta_end=<dateTime>&delta_start=<dateTime>&department=<string>&employee_id=<string>&locale=hr&manager=<integer>&page=<integer>&size=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									],
+									"query": [
+										{
+											"description": "Filter users by active status - 0 for active users, 1 for deactivated users",
+											"key": "deactivated",
+											"value": "1"
+										},
+										{
+											"description": "Filters items modified on or before the given date.             Example: `2021-12-31T23:59:59Z`",
+											"key": "delta_end",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
+											"key": "delta_start",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Filter users by department name",
+											"key": "department",
+											"value": "<string>"
+										},
+										{
+											"description": "Filter users by employee ID",
+											"key": "employee_id",
+											"value": "<string>"
+										},
+										{
+											"description": "Filter users by locale",
+											"key": "locale",
+											"value": "hr"
+										},
+										{
+											"description": "Filter users by manager ID",
+											"key": "manager",
+											"value": "<integer>"
+										},
+										{
+											"description": "Page number to return",
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"description": "Number of items to return per page",
+											"key": "size",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"est2\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"occaecat_e3\": \"<string>\",\n        \"veniam_d2\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"eiusmod54\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"in_d60\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
 						}
 					]
 				},
@@ -2974,57 +3017,57 @@
 	],
 	"variable": [
 		{
-			"id": "db7c2842-cf90-4ea3-b803-31151b28e5b9",
+			"id": "7b5ad6b1-b064-4c51-b525-4c1b9b39603b",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "e77d6281-b15f-448f-86ad-96c745c89801",
+			"id": "2055e4df-c535-4ced-843a-224440eec3d9",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "a46ef537-aa41-4c64-84e3-e913032cf6c1",
+			"id": "5d984610-201f-41b7-a542-5762c36aba2e",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "5a3e2a67-e20d-44a6-8a94-8333bb3b476a",
+			"id": "47db1f44-6091-44b9-9146-a4ce881264a9",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "a2584aa3-f833-4cf1-b040-ee3543eb7d36",
+			"id": "257118a5-b768-4357-a732-f6017350aa2f",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "87b5df5e-c0c4-49ba-8127-266ed955938c",
+			"id": "58df517f-ee2b-4371-867c-af7369a7186b",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "ed5ac2c1-c321-43ba-9de0-8eef3760a743",
+			"id": "cb7379b9-b6b3-4912-afcc-5bbba5110a8b",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "5d534789-993e-463e-8e51-571e073a6b71",
+			"id": "0e27e950-be74-4ddc-89b7-57aaa0c38099",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "59b7b237-b7c8-4865-ad76-8683f5f51e26",
+			"id": "43015442-9384-448d-9583-d0e3dcde9909",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "3f660906-052b-4793-b489-f8117f53a165",
+			"id": "12724ca2-638d-4b93-921f-c90b2f7edcb7",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "ffbf717d-2853-4056-8491-eca73adbac4f",
+			"id": "6c17c321-e2ec-4ead-b665-6ef908d39421",
 			"key": "user_id5",
 			"value": ""
 		}
