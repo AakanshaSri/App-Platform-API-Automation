@@ -2113,81 +2113,6 @@
 					]
 				},
 				{
-					"name": "Get a list of admins",
-					"id": "46d28165-3e66-4f8e-b558-50bf8d997c98",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"key": "Authorization",
-								"value": "{{apiKey}}",
-								"in": "header"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/roles/",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"roles",
-								""
-							],
-							"variable": [
-								{
-									"id": "a9365682-011f-4b3b-91e1-0b1f15ca2c23",
-									"key": "id",
-									"value": "<integer>",
-									"description": "(Required) The user ID"
-								}
-							]
-						},
-						"description": "Returns a list of all users with Admin, Super Admin, or HR Admin privileges.\n            <strong>This endpoint is only available to users with the super admin role.</strong>"
-					},
-					"response": [
-						{
-							"id": "cabd27b7-124f-43f0-bd17-8db11666cce3",
-							"name": "Successful response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "Authorization",
-										"value": "<API Key>"
-									}
-								],
-								"url": "{{baseUrl}}/api/v1/users/roles/"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"results\": [\n    {\n      \"admin_since\": \"<float>\",\n      \"id\": \"<integer>\",\n      \"managed_admin_groups\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"managed_departments\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"role\": \"none\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"admin_since\": \"<float>\",\n      \"id\": \"<integer>\",\n      \"managed_admin_groups\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"managed_departments\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
-						}
-					]
-				},
-				{
 					"name": "Get a list of users",
 					"id": "4c9fcb45-dd35-48ab-b3ed-af09c3b57cc6",
 					"protocolProfileBehavior": {
@@ -2357,19 +2282,28 @@
 				},
 				{
 					"name": "Search for users Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30e6ab34-8e3f-4ef5-83f0-5b37b60bed99",
+								"exec": [
+									"//Set collection veriabled from response",
+									"pm.test(\"Store values in collection variable\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"user_id\", jsonData.results[0].id);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "67159aa3-f6ea-47b0-b1f4-088c03e969ba",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"key": "Authorization",
-								"value": "{{apiKey}}",
-								"in": "header"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2378,7 +2312,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/search/?can_view_goal_id=<integer>&deactivated=false&feedback_cycle_id=<integer>&manager_id=<integer>&q=<string>&stats=<boolean>",
+							"raw": "{{baseUrl}}/api/v1/users/search/?q={{userEmail}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2391,34 +2325,39 @@
 							],
 							"query": [
 								{
-									"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
 									"key": "can_view_goal_id",
-									"value": "<integer>"
+									"value": "<integer>",
+									"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
+									"disabled": true
 								},
 								{
-									"description": "Search for users that are deactivated",
 									"key": "deactivated",
-									"value": "false"
+									"value": "false",
+									"description": "Search for users that are deactivated",
+									"disabled": true
 								},
 								{
-									"description": "Append the number of feedback requests per user in a given cycle.",
 									"key": "feedback_cycle_id",
-									"value": "<integer>"
+									"value": "<integer>",
+									"description": "Append the number of feedback requests per user in a given cycle.",
+									"disabled": true
 								},
 								{
-									"description": "Search for users by their manager&#39;s ID",
 									"key": "manager_id",
-									"value": "<integer>"
+									"value": "<integer>",
+									"description": "Search for users by their manager&#39;s ID",
+									"disabled": true
 								},
 								{
-									"description": "(Required) Query string matching user&#39;s full name or email",
 									"key": "q",
-									"value": "<string>"
+									"value": "{{userEmail}}",
+									"description": "(Required) Query string matching user&#39;s full name or email"
 								},
 								{
-									"description": "Append goal statistics to each user in the response.",
 									"key": "stats",
-									"value": "<boolean>"
+									"value": "<boolean>",
+									"description": "Append goal statistics to each user in the response.",
+									"disabled": true
 								}
 							]
 						},
@@ -2893,6 +2832,81 @@
 					]
 				},
 				{
+					"name": "Get a list of admins",
+					"id": "46d28165-3e66-4f8e-b558-50bf8d997c98",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"key": "Authorization",
+								"value": "{{apiKey}}",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/users/roles/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"roles",
+								""
+							],
+							"variable": [
+								{
+									"id": "a9365682-011f-4b3b-91e1-0b1f15ca2c23",
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) The user ID"
+								}
+							]
+						},
+						"description": "Returns a list of all users with Admin, Super Admin, or HR Admin privileges.\n            <strong>This endpoint is only available to users with the super admin role.</strong>"
+					},
+					"response": [
+						{
+							"id": "cabd27b7-124f-43f0-bd17-8db11666cce3",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": "{{baseUrl}}/api/v1/users/roles/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"results\": [\n    {\n      \"admin_since\": \"<float>\",\n      \"id\": \"<integer>\",\n      \"managed_admin_groups\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"managed_departments\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"role\": \"none\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"admin_since\": \"<float>\",\n      \"id\": \"<integer>\",\n      \"managed_admin_groups\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"managed_departments\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"uuid\": \"<uuid>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Clear the employee_id field for multiple users",
 					"id": "c4fb0ed0-004d-4bac-9229-974b79cfdd5f",
 					"protocolProfileBehavior": {
@@ -3078,32 +3092,32 @@
 	],
 	"variable": [
 		{
-			"id": "a1249865-cf76-4d53-b245-28ce6ea7804a",
+			"id": "fd0ed434-e547-4cd7-93b2-9f8fc16894d7",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "24d412d2-ff85-4c4f-8b47-83ea87e08395",
+			"id": "f9eb9e0c-4c4c-485f-8ff3-16ba4e1e136b",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "73a079a3-64eb-4ae9-ab7c-0e0a2e6544ab",
+			"id": "817c0315-27ec-4082-8f60-e4c28a4fda57",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "5d71d6aa-ae82-4764-bf54-2d81d7325c60",
+			"id": "9f2ed2e6-1de0-4907-b8d4-c6f417a05341",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "ebe7b737-a0ce-4cb8-b92e-8bedffb2b041",
+			"id": "3e5b9d3e-a328-44d5-a5a5-f9da54d76964",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "f0a3abcc-0c63-46bc-aee8-e76ac8899db4",
+			"id": "8012aa0a-7299-483b-90fa-b54c2abf1492",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
