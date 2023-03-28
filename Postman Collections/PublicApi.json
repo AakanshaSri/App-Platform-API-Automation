@@ -2291,7 +2291,11 @@
 									"//Set collection veriabled from response",
 									"pm.test(\"Store values in collection variable\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.collectionVariables.set(\"user_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"user_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"user_id2\", jsonData.results[1].id);",
+									"    pm.environment.set(\"user_id3\", jsonData.results[2].id);",
+									"    pm.environment.set(\"user_id4\", jsonData.results[3].id);",
+									"    pm.environment.set(\"user_id5\", jsonData.results[4].id);",
 									"});",
 									""
 								],
@@ -2949,57 +2953,57 @@
 	],
 	"variable": [
 		{
-			"id": "fac2a5a7-b370-41f0-a69e-4bf09d29485b",
+			"id": "f840a960-cc0a-48a7-a466-a76e088af61e",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "3311be6a-904a-4cba-b04e-f6536db20195",
+			"id": "729a0c4c-10e1-4758-afc2-67eb938e15cb",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "6f64b2fe-5b9b-4c3e-be10-d52b945c086c",
+			"id": "edb08f51-0211-42b2-aea9-7df8376ed56a",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "69cb3df7-55fc-4cd5-99c5-2a374fb9a989",
+			"id": "1b8bc089-5995-4081-b59f-8d4fb40cd5cb",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "5a65d6be-7716-4148-be43-bbd7b17296f0",
+			"id": "7cb6c5b7-375a-4e42-8904-8703720086f5",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "8f9adf81-812f-4acc-a44f-2cdcc876146b",
+			"id": "f7b7e7aa-f589-4637-bd7b-6497b448451d",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "9f64f1f1-af45-4b81-9472-b9bbbd54608b",
+			"id": "bedab997-85f4-4e5b-9dc0-6600cb092437",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "249a7b85-7509-43fa-9d06-6b7b91bdfc65",
+			"id": "9bd571b1-2984-4ada-94b9-3631cf08a648",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "a8535ffc-e616-4e23-b863-6bc22059f3ec",
+			"id": "0a5dac59-7eb1-4ffd-89ca-23b785f49cd3",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "b614b617-4cbf-4bea-a750-af4bd8a3754f",
+			"id": "82d1136f-0bca-4e0f-8b56-c797e3229777",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "90dd1eb0-b943-457d-8a27-0aadedd3f417",
+			"id": "aa6a7066-4c0b-4822-87b1-e7b62a9debdd",
 			"key": "user_id5",
 			"value": ""
 		}
