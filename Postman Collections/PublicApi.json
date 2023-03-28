@@ -873,11 +873,6 @@
 			"name": "feedback",
 			"item": [
 				{
-					"name": "New Folder",
-					"item": [],
-					"id": "94b3eac0-b528-4b31-bcc2-5dfcf32a3993"
-				},
-				{
 					"name": "Get a list of feedback",
 					"event": [
 						{
@@ -1953,32 +1948,32 @@
 	],
 	"variable": [
 		{
-			"id": "ed1a71aa-6e02-4540-a43a-3776a403353e",
+			"id": "cffe8f52-4b29-4f10-885c-c307a9414cdd",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "3b377cc0-cc5e-49e4-9488-77a0ef8cf10a",
+			"id": "32f1d501-2c19-4377-ba43-8be0ad83597f",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "f968a4b3-36b3-4fd6-8548-5d507df72c74",
+			"id": "0a0689cc-32d0-4133-805b-c8055c21db3d",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "3ac11331-8139-4f95-a2aa-f1b38fb7737a",
+			"id": "0e362080-a9b9-436e-bd04-bbbd6b853848",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "194d9fbf-68f6-4a3a-8b89-08453cc8b34d",
+			"id": "d5c084fb-9418-4cc1-93b0-f70937af7261",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "f0443050-db1f-481b-a54c-c53139920b4b",
+			"id": "311795c1-fe3e-45f5-9821-7b85dda86000",
 			"key": "feedback_requested_by",
 			"value": ""
 		}
