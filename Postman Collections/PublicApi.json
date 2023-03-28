@@ -2430,28 +2430,28 @@
 								"id": "3dd8fa04-b3af-4b3c-b9b2-1e36de3c3168",
 								"exec": [
 									"// Test the response body",
-									"pm.test(\"Verify if all 5 user's First name, Last name and email is correct\", function () {",
+									"pm.test(\"Verify if all user's First name, Last name and email is correct\", function () {",
 									"    var jsonData = pm.response.json();",
 									" ",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
-									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
+									"    pm.expect(jsonData.results[0]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
+									"    pm.expect(jsonData.results[0]).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
+									"    pm.expect(jsonData.results[0]).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
 									"",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
-									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
+									"    pm.expect(jsonData.results[1]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
+									"    pm.expect(jsonData.results[1]).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
+									"    pm.expect(jsonData.results[1]).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
 									"",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
-									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
+									"    pm.expect(jsonData.results[2]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
+									"    pm.expect(jsonData.results[2]).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
+									"    pm.expect(jsonData.results[2]).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
 									"",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
-									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
+									"    pm.expect(jsonData.results[3]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
+									"    pm.expect(jsonData.results[3]).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
+									"    pm.expect(jsonData.results[3]).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
 									"",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
-									"    pm.expect(jsonData).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
+									"    pm.expect(jsonData.results[4]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
+									"    pm.expect(jsonData.results[4]).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
+									"    pm.expect(jsonData.results[4]).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
 									"",
 									"    ",
 									"",
@@ -2478,7 +2478,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?delta_start=2023-03-28&page=1&size=1000&user_id={{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}",
+							"raw": "{{baseUrl}}/api/v1/users/?page=1&user_id={{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}&department={{userDepartment_name}}&{{userDepartment_name2}}&{{userDepartment_name3}}&{{userDepartment_name4}}&{{userDepartment_name5}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2504,12 +2504,7 @@
 								{
 									"key": "delta_start",
 									"value": "2023-03-28",
-									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`"
-								},
-								{
-									"key": "department",
-									"value": "<string>",
-									"description": "Filter users by department name",
+									"description": "Filters items modified on or after the given date.             Example: `2020-01-01T00:00:00Z`",
 									"disabled": true
 								},
 								{
@@ -2538,11 +2533,41 @@
 								{
 									"key": "size",
 									"value": "1000",
-									"description": "Number of items to return per page"
+									"description": "Number of items to return per page",
+									"disabled": true
 								},
 								{
 									"key": "user_id",
 									"value": "{{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "{{userDepartment_name}}"
+								},
+								{
+									"key": "{{userDepartment_name2}}",
+									"value": null
+								},
+								{
+									"key": "{{userDepartment_name3}}",
+									"value": null,
+									"type": "text"
+								},
+								{
+									"key": "{{userDepartment_name4}}",
+									"value": null,
+									"type": "text"
+								},
+								{
+									"key": "{{userDepartment_name5}}",
+									"value": null,
+									"type": "text"
 								}
 							]
 						},
@@ -3021,57 +3046,57 @@
 	],
 	"variable": [
 		{
-			"id": "dd62a7b4-3b95-4240-99c0-c920ffdae31c",
+			"id": "d1d9034b-8931-44fb-99e6-acd038d0bfff",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "991374ce-852d-4d35-a789-3aedb18de8d5",
+			"id": "24bd900e-d871-4d3d-98c7-b1b92a22802e",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "8e171900-6f2a-4318-94b7-ac2a39086e2e",
+			"id": "b8da01fb-fedc-4e34-9282-6ac482e68eb3",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "3b2ed5ec-786e-4d46-8aba-3bf647945cab",
+			"id": "2a7686cf-e694-46b6-ad5e-5402ae4cb0b2",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "c00bdd6d-d726-4d3c-95b9-ee394a20a9d7",
+			"id": "59c0aac2-91dc-474a-a883-c36ea3ca2090",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "83b8a031-9afa-48d4-ae30-2eb18a5886d3",
+			"id": "dc862fa6-5ced-48ea-8cc8-41ffee92b9d1",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "3e11e4f4-7925-4e9e-9bf4-0b566a49dc0d",
+			"id": "36648593-0931-4226-a2b3-103f432250a7",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "af921b37-2b48-44d5-b480-7bc5e4e110ca",
+			"id": "223e2778-633e-4000-b9ab-e5ab26016180",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "197d0b04-7836-4801-8959-dfad4f71894c",
+			"id": "0fe95fbc-4e5c-4d02-86e6-fc365b995cee",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "5075b9dd-131e-48c5-a9a6-751a92da64cc",
+			"id": "ed1319e2-4666-42d8-8034-d4f4a53e1da4",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "118eb5ae-6515-4f33-b41f-7229b93ab75a",
+			"id": "6206a6ef-2fb3-4ae0-977e-d6815d73c252",
 			"key": "user_id5",
 			"value": ""
 		}
