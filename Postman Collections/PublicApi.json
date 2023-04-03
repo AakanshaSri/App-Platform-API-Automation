@@ -915,7 +915,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/feedback/?for_user_id={{feedback_for_user_id}}&page=1&size=10",
+							"raw": "{{baseUrl}}/api/v1/feedback/?for_user_id={{feedback_for_user}}&page=1&size=10",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -946,7 +946,7 @@
 								},
 								{
 									"key": "for_user_id",
-									"value": "{{feedback_for_user_id}}",
+									"value": "{{feedback_for_user}}",
 									"description": "The ID of the user that received feedback"
 								},
 								{
@@ -3046,62 +3046,62 @@
 	],
 	"variable": [
 		{
-			"id": "7e04722d-e166-4f8c-9e09-b7e8b6c322ed",
+			"id": "121963ec-6b88-4cc2-b8ed-8624ec5508fb",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "0ec4125f-fcd4-4664-bc72-fa63f2dbe2ef",
+			"id": "06e6b646-bc93-47e3-b164-e3a08fe36d59",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "d567dd41-e33c-4c60-913c-d0ada22c82de",
+			"id": "b290a50d-e5c4-47b1-a2ec-1f9723c70be2",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "7c19d777-a3b6-4520-b77e-da73dbd1d7b3",
+			"id": "3fb3dfb4-a24c-4abe-b4c6-9ff4fac8dd1d",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "2ad20e38-7d66-482b-b199-dccfac7a5879",
+			"id": "9504b9af-b054-4326-9532-c99c95a099ba",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "6ff8e5b3-a33f-460b-8884-1337e14ac04d",
+			"id": "11b0d242-28c6-4b01-9bde-7c86717302ea",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "c452ca37-0899-4a27-b852-eba4d0ef6da3",
+			"id": "6d1d70a4-feb5-4a90-81af-4c55e8d5cc10",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "bdfa0eaf-6fe9-4c43-a477-30c1793f48f0",
+			"id": "f78a93d0-7133-4e96-ae8e-6a6e4030fc41",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "a989a4e4-3f0a-4a6d-b651-318e6feec6bd",
+			"id": "3e41aa60-bc5f-4815-a4df-9822d5244b71",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "820bdd6f-26c7-4ffc-b7a4-9fda8456b572",
+			"id": "b9521873-98c9-45b4-8088-f9bb2105e5cb",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "6c30be40-dcf4-4abd-a660-378b6650fb34",
+			"id": "3718ef5b-96c8-43ca-bd39-affac437b780",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "c6c07ff1-f869-46d7-9611-6f44aa379c6c",
+			"id": "0e30b1c9-41e8-45e7-9231-4e3e69f6f2ed",
 			"key": "uuid",
 			"value": ""
 		}
