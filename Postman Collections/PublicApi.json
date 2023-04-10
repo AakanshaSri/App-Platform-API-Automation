@@ -2480,11 +2480,11 @@
 									"",
 									"// set new userId",
 									"",
-									"pm.environment.set(\"id\",user_id),",
-									"  pm.environment.set(\"id\",user_id2),",
-									"  pm.environment.set(\"id\",user_id3),",
-									"  pm.environment.set(\"id\",user_id4),",
-									"  pm.environment.set(\"id\",user_id5)",
+									"pm.environment.set(\"user_id\",id),",
+									"  pm.environment.set(\"user_id2\",id),",
+									"  pm.environment.set(\"user_id3\",id),",
+									"  pm.environment.set(\"user_id4\",id),",
+									"  pm.environment.set(\"user_id5\",id)",
 									""
 								],
 								"type": "text/javascript"
@@ -3059,62 +3059,62 @@
 	],
 	"variable": [
 		{
-			"id": "cf191ae8-0544-42f8-91bd-ae54bc3283eb",
+			"id": "0651f662-29f5-4b91-8764-f3156c3666cb",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "682a44ba-581a-4a4f-aa6f-7b919e87b0a5",
+			"id": "eb84fb06-fa4e-4965-a1a1-bc4cb054997e",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "b0224bc1-df6a-4b39-a9dd-428600d5d38c",
+			"id": "7ba4a57d-cf16-4dea-a567-57ce2409c715",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "e3e3bfb0-2010-430d-ac7c-8b8610c78c1f",
+			"id": "2cf57bbb-e4a3-45f4-88cc-f067c1b82b0f",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "ca145f92-e5dd-439b-ae41-1fd2554d28e4",
+			"id": "e79cc9bc-2f44-4dbd-8477-a9043d293269",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "c0ac0a9b-3212-4060-87c0-77b6154857ab",
+			"id": "da8b6117-38fa-414f-9e6a-f7c80effe866",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "8909ba1a-dc22-4263-8c5d-8acb6892d3f7",
+			"id": "6e9ccec1-8e23-4aea-867b-850f366faa8d",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "3c89e374-16e3-4b62-a19e-afde83d47472",
+			"id": "dc610444-0faa-4c29-b333-851b06b81f31",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "31a0a2bc-b976-4c23-9028-637466081976",
+			"id": "fdb72457-1edd-4c7a-a1ae-5d54f811ddc1",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "4e4ba9cf-33d8-4269-9253-db46d1410a9d",
+			"id": "b5d3f2f3-7c90-4b45-8289-96cf5334d546",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "89ca53bb-40ae-4bee-893e-e6e9347c44ca",
+			"id": "b380b892-34b2-4f9a-9412-fe6634d2e04b",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "8d927cd4-66d9-43ca-b330-bd9d55485ae0",
+			"id": "24e4d0fc-1db2-49c1-8fe3-19c2c84bd80e",
 			"key": "uuid",
 			"value": ""
 		}
