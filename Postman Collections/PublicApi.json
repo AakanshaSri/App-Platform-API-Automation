@@ -2298,30 +2298,19 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0992285b-6b80-455e-81f6-7da9f53e9889",
+								"id": "df343b51-efa0-4e9e-aa80-54d27a682c0e",
 								"exec": [
-									"URL = \"http://rainforest.betterworks.com/api/v1/users\"",
-									"",
-									"",
-									"//Set collection veriabled from response",
-									"pm.test(\"Store values in collection variable\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.collectionVariables.set(\"uuid\", jsonData.uuid);",
-									"    pm.collectionVariables.set(\"userFirstName\", jsonData.first_name);",
-									"    pm.collectionVariables.set(\"userSecondName\", jsonData.last_name);",
-									"});",
-									"",
-									"",
-									"",
 									"// Test the response body",
 									"pm.test(\"Response body is valid\", function () {",
 									"    var jsonData = pm.response.json();",
 									" ",
-									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.collectionVariables.get(\"userFirstName\"));",
-									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.collectionVariables.get(\"userSecondName\"));",
-									"    pm.expect(jsonData).to.have.property(\"uuid\", pm.collectionVariables.get(\"uuid\"));",
+									"    pm.expect(jsonData).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
+									"    pm.expect(jsonData).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
+									"    ",
 									"});",
 									"",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"user_created_on\", jsonData.results[0].created_on)",
 									"",
 									"",
 									""
@@ -2332,7 +2321,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b3c986cb-d17e-4874-a60f-be2285f8844b",
+								"id": "1fd2cb2f-77b9-497d-af87-3eac31143b08",
 								"exec": [
 									""
 								],
@@ -2345,14 +2334,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"value": "{{Authorization}}",
-								"key": "Authorization",
-								"in": "header"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2369,7 +2350,7 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/v1/users/{{userId}}/",
+						"url": "{{baseUrl}}/api/v1/users/{{user_id}}/",
 						"description": "Returns a user."
 					},
 					"response": [
@@ -3009,62 +2990,62 @@
 	],
 	"variable": [
 		{
-			"id": "c35d08c0-df75-401f-b4d9-a9aa46fd427f",
+			"id": "a5af12e1-e0a5-4bb2-953b-9b0958cf75c1",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "695295a0-d808-4f91-9ad1-2913a6ec5364",
+			"id": "72bbdded-99cc-40d5-9cd9-1b5570405da0",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "81f93254-39cd-4707-b0a0-34c055617a2c",
+			"id": "8cb6f698-6027-4b25-8377-ddedb73670fc",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "72783665-656c-4b3f-9412-378fd00e07c1",
+			"id": "32ff990c-7a7e-420f-bebb-d1473b66e786",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "4ff77c5a-15c3-42d3-b4da-5c6b03a455f3",
+			"id": "948b3516-1b50-4c0b-8f8b-0e1e14763a83",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "a3fe99db-e134-4b5d-989d-4683a6253875",
+			"id": "3361d7eb-2f0b-4eb8-a3f2-3a3e7be70d38",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "d26b2ab8-d951-45da-bfaf-a9df05e75793",
+			"id": "bc30d5f7-2d4a-4934-babe-be17ac382ed2",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "23e858ae-70a5-4ca2-af70-43eded80f7c8",
+			"id": "fabf1258-6838-4557-91f8-f9f21b8f2e81",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "4c2afa49-846d-4475-a348-7fbcbcfe2d9e",
+			"id": "787af216-f8eb-4602-9a67-67f3c61f749d",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "5b05bbac-24a9-42fd-9c0b-86769e24423c",
+			"id": "7ac3b61d-2df8-4a07-931c-782e011ba6a7",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "4b77de69-6434-40d3-8e80-da2ce4f12415",
+			"id": "d2e63723-b037-46e3-857f-689716892d4e",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "16219010-50c7-44cc-91b9-20cef5a7e580",
+			"id": "c868ba18-8207-4f32-b974-7bd113bbdd3f",
 			"key": "uuid",
 			"value": ""
 		}
