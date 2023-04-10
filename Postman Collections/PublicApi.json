@@ -2662,14 +2662,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"key": "Authorization",
-								"value": "{{apiKey}}",
-								"in": "header"
-							}
-						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2683,7 +2675,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"roles\": [\n    {\n      \"identifier\": \"<uuid>\",\n      \"role\": \"groupadmin\",\n      \"departments\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"admin_groups\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"identifier\": \"<uuid>\",\n      \"role\": \"none\",\n      \"departments\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"admin_groups\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ]\n}",
+							"raw": "{\n  \"roles\": [\n    {\n      \"admin_since\": null,\n      \"user_id\": \"{{user_id3}}\",\n      \"role\": \"superadmin\",\n      \"departments\": [],\n      \"admin_groups\":[]\n    }\n    \n  ]\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -3040,62 +3032,62 @@
 	],
 	"variable": [
 		{
-			"id": "e2f2c16c-b35f-40ac-9984-5b5e5b73eb53",
+			"id": "58329095-5cab-4912-b8c6-63e8cc19066c",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "c3b208f1-4d62-4550-a9e7-15f5e417498b",
+			"id": "40e0e81c-426a-4f5e-b1d6-7ecda3437ff7",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "72f90363-94b8-4ba8-9d96-629dc43a387b",
+			"id": "87211d12-9018-4d5e-bcea-d968ec13a5f9",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "515d3221-513a-42ee-95b7-0d92402484d3",
+			"id": "b4ec78e7-a96d-4c66-a844-e6ca4fbb6a25",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "d01fbcd6-8d84-4492-8913-313e4f0522c4",
+			"id": "7d554c8a-7ecc-4408-b0e2-359b664738a5",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "7f27889c-a9b3-46f3-95b3-6eee9f4d218f",
+			"id": "8a4495ac-df3e-4241-bb47-86ed0ffe52c5",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "e0f6e8b9-c706-4825-9d1a-88a15ffa8cca",
+			"id": "7172b658-04bc-4458-ac9c-4202bbc0843a",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "c94688be-50c0-413c-8c7d-ef959e098c88",
+			"id": "2dd69e99-8e75-4af1-a9fd-3a7cba83eb7b",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "7e88c1d7-450c-46cb-9ff2-28fcd06c4da4",
+			"id": "31b3b72b-98ec-43e8-84c7-e1c98a31a849",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "81c3dd5a-d3c8-426d-a717-a3ae3ac95802",
+			"id": "260af844-efee-41bc-9091-bf0e8f59c00c",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "940590e0-1efe-4dea-aedd-f9d3b071dbc6",
+			"id": "242ee2a0-acbf-48aa-ba70-a02f364c0429",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "c925d1dc-89fd-4bf1-ab70-b997945cea08",
+			"id": "49ec4e20-915a-4c84-8bfd-64db96df525c",
 			"key": "uuid",
 			"value": ""
 		}
