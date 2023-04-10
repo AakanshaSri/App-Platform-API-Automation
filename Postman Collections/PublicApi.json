@@ -2447,6 +2447,16 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "df448e0a-72ba-4ecf-84ac-f21512ae15e8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"id": "4c9fcb45-dd35-48ab-b3ed-af09c3b57cc6",
@@ -2462,7 +2472,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?delta_start={{$isoTimestamp}}",
+							"raw": "{{baseUrl}}/api/v1/users/?delta_start={{timestamp}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2536,7 +2546,7 @@
 								},
 								{
 									"key": "delta_start",
-									"value": "{{$isoTimestamp}}"
+									"value": "{{timestamp}}"
 								}
 							]
 						},
@@ -3015,62 +3025,62 @@
 	],
 	"variable": [
 		{
-			"id": "7cf01e21-ce6c-4108-a5e2-61ec1af26c2a",
+			"id": "a9a7996f-0446-4b3f-a4b3-efccfd41abbf",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "47c051be-ac14-4402-a103-2dedcf790f86",
+			"id": "54da3620-17e4-4e80-8ac2-36e11e77894d",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "e2dda522-98b0-48e5-ac72-0f82b5b48b27",
+			"id": "75f6ebc4-4f09-44a1-895b-72e8dc30c706",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "3b6930f4-7d47-4033-b620-8b3fddadec67",
+			"id": "2d93fca4-d98a-44c9-ad3b-0bfbeb3485a5",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "260ce9a7-e450-453c-a985-7725f98dfdda",
+			"id": "25cddc21-6113-4c96-8dbc-f8901c55a6d4",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "331ddf34-5a3b-45a7-99b2-a210b3b4cc41",
+			"id": "29a44d20-f2e1-42e2-879f-8717ba1cad7c",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "d74137e3-da3f-448a-9712-84271c104174",
+			"id": "5586fdf9-b73f-4b9c-849f-6796f22c4266",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "084832aa-0aaa-4b8d-974d-eebd52551eda",
+			"id": "c0579513-4971-488b-adcd-00202808b898",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "8a9ff3a5-f6bd-4f18-a0f0-a1841029ed0d",
+			"id": "ae696e67-ecca-4f5a-9768-5afc9c98cb23",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "8eb0b55b-afb1-4bdf-b02d-d1aa3737baf0",
+			"id": "742276e5-5290-4a97-8fca-7319a8e4b3d5",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "2ab66e5d-ca36-459b-a4bf-aa4acd1f0480",
+			"id": "77bdcbd5-d71f-46a6-94f1-871c2e2a7ece",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "abe0e8d9-d344-4e86-b857-b31713b73c19",
+			"id": "aa13ee2e-1dae-424c-83c2-9b1682f582d7",
 			"key": "uuid",
 			"value": ""
 		}
