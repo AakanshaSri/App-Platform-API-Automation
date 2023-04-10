@@ -2427,22 +2427,11 @@
 									"});",
 									"",
 									"console.log(firstNames);",
-									"// console.log(actualNames)",
-									"// pm.test(\"Body matches string\", function () {",
-									"//     pm.expect(pm.response.results.first_name.text()).to.include(\"userFirstName\");",
-									"// });",
 									"",
 									"",
-									"",
-									"",
-									"",
-									"for (let i = 0; i < expectedNames.length; i++) {",
-									"  pm.test(`User ${expectedNames[i]} should be in the response`, function () {",
-									"     pm.expect(actualNames).to.include(expectedNames[i]);",
-									"    console.log (pm.expect(actualNames).to.include(expectedNames[i]))",
-									"  });",
-									"}",
-									"",
+									"pm.test(\"User ${expectedNames} should be in the response \" + expectedNames, function() {",
+									"    pm.expect(firstNames).to.eql(expectedNames);",
+									"});",
 									"",
 									"",
 									""
@@ -2464,7 +2453,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?sort=-delta_start&delta_start=2023-04-10T00:00:00Z",
+							"raw": "{{baseUrl}}/api/v1/users/?delta_start={{$isoTimestamp}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2513,31 +2502,32 @@
 								},
 								{
 									"key": "{{user_id3}}",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name3}}",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name4}}",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name5}}",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "sort",
-									"value": "-delta_start"
+									"value": "-delta_start",
+									"disabled": true
 								},
 								{
 									"key": "delta_start",
-									"value": "2023-04-10T00:00:00Z"
+									"value": "{{$isoTimestamp}}"
 								}
 							]
 						},
@@ -3016,62 +3006,62 @@
 	],
 	"variable": [
 		{
-			"id": "0f7847fa-f6e0-4c07-be34-e2b651c32d50",
+			"id": "d3ba1cce-41f4-4080-892e-934b333f2102",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "b0aa66ed-755a-4a75-bcf1-2cf16dd0090a",
+			"id": "89d02853-0441-4083-9501-261f7819ffab",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "f0f0e118-c612-42ee-9b3e-85faca5504a9",
+			"id": "d74830dd-7e70-4eb1-b344-c05e978ddaed",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "9ac795b7-c8fd-470e-a615-da9f199e689d",
+			"id": "a9048ac6-694d-405c-ad5f-fdad7c0eb850",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "c50421b6-599d-4348-b01a-cedfbb4021a0",
+			"id": "82582f02-832e-48f5-99d9-e3fb78851702",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "b3bc21f6-5397-41e0-bf79-b8e571882394",
+			"id": "3a2cf9ca-72af-49c0-bbef-199451b6d3cc",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "0e222750-f854-41c5-97f3-22ffaad9c267",
+			"id": "96eababe-d927-4eb1-b68f-58ceea825c26",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "efa11148-8e17-4a46-aa10-2f8320feb535",
+			"id": "a6c425bf-e2af-4e91-879c-671bf3e6a9d7",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "45118596-011d-476b-b1af-3ede711f6f2f",
+			"id": "a4835168-47bd-482c-bbc6-f4da30ea3ff6",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "2bd12fad-9e5f-4734-9f66-d8e72bde26d8",
+			"id": "f22ec29e-24ec-4a9a-86d4-c0362015b71e",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "d94ee051-ae32-45b3-9754-ce9c6b6d3996",
+			"id": "15e5b23e-b251-4d22-b1d9-19eacae06eb3",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "be2ebcd7-6f2b-4b87-b823-3682856306ac",
+			"id": "93c5c56d-1efc-4830-942a-f839e083cebd",
 			"key": "uuid",
 			"value": ""
 		}
