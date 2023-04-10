@@ -2169,7 +2169,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/search/?deactivated=false&q=ads",
+							"raw": "{{baseUrl}}/api/v1/users/search/?size=10&page=2&q=aaka",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2186,11 +2186,6 @@
 									"value": "<integer>",
 									"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
 									"disabled": true
-								},
-								{
-									"key": "deactivated",
-									"value": "false",
-									"description": "Search for users that are deactivated"
 								},
 								{
 									"key": "feedback_cycle_id",
@@ -2211,8 +2206,16 @@
 									"disabled": true
 								},
 								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
 									"key": "q",
-									"value": "ads"
+									"value": "aaka"
 								}
 							]
 						},
@@ -2990,62 +2993,62 @@
 	],
 	"variable": [
 		{
-			"id": "a5af12e1-e0a5-4bb2-953b-9b0958cf75c1",
+			"id": "55ae9b1f-cd87-40c2-9237-2ac91e8dc1e1",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "72bbdded-99cc-40d5-9cd9-1b5570405da0",
+			"id": "09ff3729-d85a-459c-98e6-81057bc8a605",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "8cb6f698-6027-4b25-8377-ddedb73670fc",
+			"id": "3141a4ad-de33-4dd0-8bf6-d5157e8941c3",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "32ff990c-7a7e-420f-bebb-d1473b66e786",
+			"id": "8757df15-8b1f-403d-9911-f5ae4bb9cb96",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "948b3516-1b50-4c0b-8f8b-0e1e14763a83",
+			"id": "7822dfb6-fd68-4f61-bdd5-9ddbeebd8d1e",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "3361d7eb-2f0b-4eb8-a3f2-3a3e7be70d38",
+			"id": "3d58ec76-bdc7-493a-9b1a-ce98cda8cab6",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "bc30d5f7-2d4a-4934-babe-be17ac382ed2",
+			"id": "7e1813d5-8967-4cfe-b04d-1e1026579ffe",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "fabf1258-6838-4557-91f8-f9f21b8f2e81",
+			"id": "071be958-c55f-4995-846d-9f77f9c798c3",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "787af216-f8eb-4602-9a67-67f3c61f749d",
+			"id": "91e54718-c68f-449a-88f7-4eaadfecfc7f",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "7ac3b61d-2df8-4a07-931c-782e011ba6a7",
+			"id": "88e0ab9b-ec1e-423a-b125-0783891c4878",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "d2e63723-b037-46e3-857f-689716892d4e",
+			"id": "9a68b003-9ae1-44a4-8cc7-a543bd2b99e1",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "c868ba18-8207-4f32-b974-7bd113bbdd3f",
+			"id": "d79696b5-2bc3-4f19-901f-19e8de302194",
 			"key": "uuid",
 			"value": ""
 		}
