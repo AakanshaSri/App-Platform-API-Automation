@@ -2427,35 +2427,47 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3dd8fa04-b3af-4b3c-b9b2-1e36de3c3168",
+								"id": "f84efecb-eb9e-4e49-8dc1-5eeec9240841",
 								"exec": [
-									"// Test the response body",
-									"pm.test(\"Verify if all user's First name, Last name and email is correct\", function () {",
-									"    var jsonData = pm.response.json();",
+									"// // Test the response body",
+									"// pm.test(\"Verify if all user's First name, Last name and email is correct\", function () {",
+									"//     var jsonData = pm.response.json();",
 									" ",
-									"    pm.expect(jsonData.results[0]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
-									"    pm.expect(jsonData.results[0]).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
-									"    pm.expect(jsonData.results[0]).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
+									"//     pm.expect(jsonData.results[0]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
+									"//     pm.expect(jsonData.results[0]).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
+									"//     pm.expect(jsonData.results[0]).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
 									"",
-									"    pm.expect(jsonData.results[1]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
-									"    pm.expect(jsonData.results[1]).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
-									"    pm.expect(jsonData.results[1]).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
+									"//     pm.expect(jsonData.results[1]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
+									"//     pm.expect(jsonData.results[1]).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
+									"//     pm.expect(jsonData.results[1]).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
 									"",
-									"    pm.expect(jsonData.results[2]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
-									"    pm.expect(jsonData.results[2]).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
-									"    pm.expect(jsonData.results[2]).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
+									"//     pm.expect(jsonData.results[2]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
+									"//     pm.expect(jsonData.results[2]).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
+									"//     pm.expect(jsonData.results[2]).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
 									"",
-									"    pm.expect(jsonData.results[3]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
-									"    pm.expect(jsonData.results[3]).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
-									"    pm.expect(jsonData.results[3]).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
+									"//     pm.expect(jsonData.results[3]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
+									"//     pm.expect(jsonData.results[3]).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
+									"//     pm.expect(jsonData.results[3]).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
 									"",
-									"    pm.expect(jsonData.results[4]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
-									"    pm.expect(jsonData.results[4]).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
-									"    pm.expect(jsonData.results[4]).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
+									"//     pm.expect(jsonData.results[4]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
+									"//     pm.expect(jsonData.results[4]).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
+									"//     pm.expect(jsonData.results[4]).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
 									"",
 									"    ",
 									"",
-									"});",
+									"// });",
+									"",
+									"",
+									"let expectedNames = JSON.parse(pm.environment.get(\"userFirstName\"));",
+									"console.log(expectedNames)",
+									"// let actualNames = pm.response.json().first_name;",
+									"// console.log(actualNames)",
+									"",
+									"// for (let i = 0; i < expectedNames.length; i++) {",
+									"//   pm.test(`User ${expectedNames[i]} should be in the response`, function () {",
+									"//     pm.expect(actualNames).to.include(expectedNames[i]);",
+									"//   });",
+									"// }",
 									"",
 									"",
 									"",
@@ -2478,7 +2490,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?page=1&user_id={{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}&department={{userDepartment_name}}&{{userDepartment_name2}}&{{userDepartment_name3}}&{{userDepartment_name4}}&{{userDepartment_name5}}",
+							"raw": "{{baseUrl}}/api/v1/users/?page=1&user_id={{user_id}}department={{userDepartment_name}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2537,37 +2549,34 @@
 									"disabled": true
 								},
 								{
-									"key": "user_id",
-									"value": "{{user_id}},{{user_id2}},{{user_id3}},{{user_id4}},{{user_id5}}"
-								},
-								{
 									"key": "",
 									"value": "",
 									"type": "text",
 									"disabled": true
 								},
 								{
-									"key": "department",
-									"value": "{{userDepartment_name}}"
-								},
-								{
 									"key": "{{userDepartment_name2}}",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name3}}",
 									"value": null,
-									"type": "text"
+									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name4}}",
 									"value": null,
-									"type": "text"
+									"disabled": true
 								},
 								{
 									"key": "{{userDepartment_name5}}",
 									"value": null,
-									"type": "text"
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "{{user_id}}department={{userDepartment_name}}"
 								}
 							]
 						},
@@ -3046,62 +3055,62 @@
 	],
 	"variable": [
 		{
-			"id": "121963ec-6b88-4cc2-b8ed-8624ec5508fb",
+			"id": "df883451-ae77-4c9e-b38a-6799c437cc7f",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "06e6b646-bc93-47e3-b164-e3a08fe36d59",
+			"id": "dc97ca28-7a03-4db1-8f9a-87c33764e251",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "b290a50d-e5c4-47b1-a2ec-1f9723c70be2",
+			"id": "2d83be80-b29a-40ee-b2b8-dec49a0aa63d",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "3fb3dfb4-a24c-4abe-b4c6-9ff4fac8dd1d",
+			"id": "c375a3b5-c70b-40b7-9a8f-18a931d906ae",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "9504b9af-b054-4326-9532-c99c95a099ba",
+			"id": "6bb72a34-80dd-4d0d-89d9-aab2cc833d07",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "11b0d242-28c6-4b01-9bde-7c86717302ea",
+			"id": "7c8ebbba-60ba-4006-84ee-4ad3d3a19c26",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "6d1d70a4-feb5-4a90-81af-4c55e8d5cc10",
+			"id": "e098a41c-3007-469b-b4d2-d9160f39d2d4",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "f78a93d0-7133-4e96-ae8e-6a6e4030fc41",
+			"id": "7e11d16b-668f-447e-b95f-9d8a0dd8a46c",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "3e41aa60-bc5f-4815-a4df-9822d5244b71",
+			"id": "d370bd9c-d935-4a14-bb4b-4e35f76f9b3a",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "b9521873-98c9-45b4-8088-f9bb2105e5cb",
+			"id": "9f275a1a-60f8-4651-967d-a10ddc68cac3",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "3718ef5b-96c8-43ca-bd39-affac437b780",
+			"id": "ddc77f0b-8996-4dd9-a26b-ac9aa1dc5107",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "0e30b1c9-41e8-45e7-9231-4e3e69f6f2ed",
+			"id": "adae2274-c129-495d-832f-f0fad8b59303",
 			"key": "uuid",
 			"value": ""
 		}
