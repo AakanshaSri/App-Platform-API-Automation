@@ -2420,12 +2420,25 @@
 									"];",
 									"",
 									"console.log(expectedNames);",
-									"let actualNames = pm.response.json().first_name;",
-									"console.log(actualNames)",
+									"var jsonData = pm.response.json();",
+									"let firstNames = []",
+									"jsonData.results.forEach(function(result) {",
+									"  firstNames.push(result.first_name);",
+									"});",
+									"",
+									"console.log(firstNames);",
+									"// console.log(actualNames)",
+									"// pm.test(\"Body matches string\", function () {",
+									"//     pm.expect(pm.response.results.first_name.text()).to.include(\"userFirstName\");",
+									"// });",
+									"",
+									"",
+									"",
+									"",
 									"",
 									"for (let i = 0; i < expectedNames.length; i++) {",
 									"  pm.test(`User ${expectedNames[i]} should be in the response`, function () {",
-									"    pm.expect(actualNames).to.include(expectedNames[i]);",
+									"     pm.expect(actualNames).to.include(expectedNames[i]);",
 									"    console.log (pm.expect(actualNames).to.include(expectedNames[i]))",
 									"  });",
 									"}",
@@ -2451,7 +2464,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?page=1&size=1000&user_id={{user_id4}}",
+							"raw": "{{baseUrl}}/api/v1/users/?sort=-delta_start&delta_start=2023-04-10T00:00:00Z",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2462,15 +2475,6 @@
 								""
 							],
 							"query": [
-								{
-									"key": "page",
-									"value": "1",
-									"description": "Page number to return"
-								},
-								{
-									"key": "size",
-									"value": "1000"
-								},
 								{
 									"key": "deactivated",
 									"value": "1",
@@ -2508,13 +2512,32 @@
 									"disabled": true
 								},
 								{
-									"key": "user_id",
-									"value": "{{user_id4}}"
+									"key": "{{user_id3}}",
+									"value": null,
+									"disabled": true
 								},
 								{
-									"key": "department",
-									"value": "{{userDepartment_name}},{{userDepartment_name2}},{{userDepartment_name3}},{{userDepartment_name4}},{{userDepartment_name5}}",
+									"key": "{{userDepartment_name3}}",
+									"value": null,
 									"disabled": true
+								},
+								{
+									"key": "{{userDepartment_name4}}",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "{{userDepartment_name5}}",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-delta_start"
+								},
+								{
+									"key": "delta_start",
+									"value": "2023-04-10T00:00:00Z"
 								}
 							]
 						},
@@ -2993,62 +3016,62 @@
 	],
 	"variable": [
 		{
-			"id": "55ae9b1f-cd87-40c2-9237-2ac91e8dc1e1",
+			"id": "0f7847fa-f6e0-4c07-be34-e2b651c32d50",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "09ff3729-d85a-459c-98e6-81057bc8a605",
+			"id": "b0aa66ed-755a-4a75-bcf1-2cf16dd0090a",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "3141a4ad-de33-4dd0-8bf6-d5157e8941c3",
+			"id": "f0f0e118-c612-42ee-9b3e-85faca5504a9",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "8757df15-8b1f-403d-9911-f5ae4bb9cb96",
+			"id": "9ac795b7-c8fd-470e-a615-da9f199e689d",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "7822dfb6-fd68-4f61-bdd5-9ddbeebd8d1e",
+			"id": "c50421b6-599d-4348-b01a-cedfbb4021a0",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "3d58ec76-bdc7-493a-9b1a-ce98cda8cab6",
+			"id": "b3bc21f6-5397-41e0-bf79-b8e571882394",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "7e1813d5-8967-4cfe-b04d-1e1026579ffe",
+			"id": "0e222750-f854-41c5-97f3-22ffaad9c267",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "071be958-c55f-4995-846d-9f77f9c798c3",
+			"id": "efa11148-8e17-4a46-aa10-2f8320feb535",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "91e54718-c68f-449a-88f7-4eaadfecfc7f",
+			"id": "45118596-011d-476b-b1af-3ede711f6f2f",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "88e0ab9b-ec1e-423a-b125-0783891c4878",
+			"id": "2bd12fad-9e5f-4734-9f66-d8e72bde26d8",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "9a68b003-9ae1-44a4-8cc7-a543bd2b99e1",
+			"id": "d94ee051-ae32-45b3-9754-ce9c6b6d3996",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "d79696b5-2bc3-4f19-901f-19e8de302194",
+			"id": "be2ebcd7-6f2b-4b87-b823-3682856306ac",
 			"key": "uuid",
 			"value": ""
 		}
