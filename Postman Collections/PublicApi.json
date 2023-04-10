@@ -2169,7 +2169,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/search/?q={{userEmail}},{{userEmail2}},{{userEmail3}},{{userEmail4}},{{userEmail5}}",
+							"raw": "{{baseUrl}}/api/v1/users/search/?deactivated=false&q=ads",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2190,8 +2190,7 @@
 								{
 									"key": "deactivated",
 									"value": "false",
-									"description": "Search for users that are deactivated",
-									"disabled": true
+									"description": "Search for users that are deactivated"
 								},
 								{
 									"key": "feedback_cycle_id",
@@ -2206,15 +2205,14 @@
 									"disabled": true
 								},
 								{
-									"key": "q",
-									"value": "{{userEmail}},{{userEmail2}},{{userEmail3}},{{userEmail4}},{{userEmail5}}",
-									"description": "(Required) Query string matching user&#39;s full name or email"
-								},
-								{
 									"key": "stats",
 									"value": "<boolean>",
 									"description": "Append goal statistics to each user in the response.",
 									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "ads"
 								}
 							]
 						},
@@ -3011,62 +3009,62 @@
 	],
 	"variable": [
 		{
-			"id": "cba49748-f7b2-45ca-924f-cd648b44aa4b",
+			"id": "c35d08c0-df75-401f-b4d9-a9aa46fd427f",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "d5f9461e-4e94-4044-ba61-4516359c3f74",
+			"id": "695295a0-d808-4f91-9ad1-2913a6ec5364",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "498b2ab0-283e-4450-9f61-2dd86bcc878d",
+			"id": "81f93254-39cd-4707-b0a0-34c055617a2c",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "9325a408-d067-42fd-8437-8887711023c3",
+			"id": "72783665-656c-4b3f-9412-378fd00e07c1",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "c88b33d3-bd0e-406b-84f4-2ef9e53d4a8f",
+			"id": "4ff77c5a-15c3-42d3-b4da-5c6b03a455f3",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "361078d6-bce7-4597-8e79-1dba983626c5",
+			"id": "a3fe99db-e134-4b5d-989d-4683a6253875",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "df3856aa-ad2f-4a01-998a-6b87bfa8b269",
+			"id": "d26b2ab8-d951-45da-bfaf-a9df05e75793",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "ee01142f-8c70-4f77-830f-099a96deba85",
+			"id": "23e858ae-70a5-4ca2-af70-43eded80f7c8",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "c12a32f7-fe0f-40db-a19a-0362c05e6249",
+			"id": "4c2afa49-846d-4475-a348-7fbcbcfe2d9e",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "64ac7c4c-1cd0-42d3-950a-1e4e799f78a4",
+			"id": "5b05bbac-24a9-42fd-9c0b-86769e24423c",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "778c4f77-ca18-40ed-a0dc-b89b2f039fff",
+			"id": "4b77de69-6434-40d3-8e80-da2ce4f12415",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "e94a3049-4608-4e5d-bb21-bfe453560d7f",
+			"id": "16219010-50c7-44cc-91b9-20cef5a7e580",
 			"key": "uuid",
 			"value": ""
 		}
