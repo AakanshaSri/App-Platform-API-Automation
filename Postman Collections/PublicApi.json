@@ -2429,45 +2429,24 @@
 							"script": {
 								"id": "f84efecb-eb9e-4e49-8dc1-5eeec9240841",
 								"exec": [
-									"// // Test the response body",
-									"// pm.test(\"Verify if all user's First name, Last name and email is correct\", function () {",
-									"//     var jsonData = pm.response.json();",
-									" ",
-									"//     pm.expect(jsonData.results[0]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName\"));",
-									"//     pm.expect(jsonData.results[0]).to.have.property(\"last_name\", pm.environment.get(\"userLastName\"));",
-									"//     pm.expect(jsonData.results[0]).to.have.property(\"email\", pm.environment.get(\"userEmail\"));",
+									"let expectedNames = [",
+									"  pm.environment.get(\"userFirstName\"),",
+									"  pm.environment.get(\"userFirstName2\"),",
+									"  pm.environment.get(\"userFirstName3\"),",
+									"  pm.environment.get(\"userFirstName4\"),",
+									"  pm.environment.get(\"userFirstName5\")",
+									"];",
 									"",
-									"//     pm.expect(jsonData.results[1]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName2\"));",
-									"//     pm.expect(jsonData.results[1]).to.have.property(\"last_name\", pm.environment.get(\"userLastName2\"));",
-									"//     pm.expect(jsonData.results[1]).to.have.property(\"email\", pm.environment.get(\"userEmail2\"));",
+									"console.log(expectedNames);",
+									"let actualNames = pm.response.json().first_name;",
+									"console.log(actualNames)",
 									"",
-									"//     pm.expect(jsonData.results[2]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName3\"));",
-									"//     pm.expect(jsonData.results[2]).to.have.property(\"last_name\", pm.environment.get(\"userLastName3\"));",
-									"//     pm.expect(jsonData.results[2]).to.have.property(\"email\", pm.environment.get(\"userEmail3\"));",
-									"",
-									"//     pm.expect(jsonData.results[3]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName4\"));",
-									"//     pm.expect(jsonData.results[3]).to.have.property(\"last_name\", pm.environment.get(\"userLastName4\"));",
-									"//     pm.expect(jsonData.results[3]).to.have.property(\"email\", pm.environment.get(\"userEmail4\"));",
-									"",
-									"//     pm.expect(jsonData.results[4]).to.have.property(\"first_name\", pm.environment.get(\"userFirstName5\"));",
-									"//     pm.expect(jsonData.results[4]).to.have.property(\"last_name\", pm.environment.get(\"userLastName5\"));",
-									"//     pm.expect(jsonData.results[4]).to.have.property(\"email\", pm.environment.get(\"userEmail5\"));",
-									"",
-									"    ",
-									"",
-									"// });",
-									"",
-									"",
-									"let expectedNames = JSON.parse(pm.environment.get(\"userFirstName\"));",
-									"console.log(expectedNames)",
-									"// let actualNames = pm.response.json().first_name;",
-									"// console.log(actualNames)",
-									"",
-									"// for (let i = 0; i < expectedNames.length; i++) {",
-									"//   pm.test(`User ${expectedNames[i]} should be in the response`, function () {",
-									"//     pm.expect(actualNames).to.include(expectedNames[i]);",
-									"//   });",
-									"// }",
+									"for (let i = 0; i < expectedNames.length; i++) {",
+									"  pm.test(`User ${expectedNames[i]} should be in the response`, function () {",
+									"    pm.expect(actualNames).to.include(expectedNames[i]);",
+									"    console.log (pm.expect(actualNames).to.include(expectedNames[i]))",
+									"  });",
+									"}",
 									"",
 									"",
 									"",
@@ -2490,7 +2469,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/?page=1&user_id={{user_id}}department={{userDepartment_name}}",
+							"raw": "{{baseUrl}}/api/v1/users/?page=1&size=1000&user_id={{user_id4}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2501,6 +2480,15 @@
 								""
 							],
 							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number to return"
+								},
+								{
+									"key": "size",
+									"value": "1000"
+								},
 								{
 									"key": "deactivated",
 									"value": "1",
@@ -2538,45 +2526,13 @@
 									"disabled": true
 								},
 								{
-									"key": "page",
-									"value": "1",
-									"description": "Page number to return"
-								},
-								{
-									"key": "size",
-									"value": "1000",
-									"description": "Number of items to return per page",
-									"disabled": true
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "{{userDepartment_name2}}",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "{{userDepartment_name3}}",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "{{userDepartment_name4}}",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "{{userDepartment_name5}}",
-									"value": null,
-									"disabled": true
-								},
-								{
 									"key": "user_id",
-									"value": "{{user_id}}department={{userDepartment_name}}"
+									"value": "{{user_id4}}"
+								},
+								{
+									"key": "department",
+									"value": "{{userDepartment_name}},{{userDepartment_name2}},{{userDepartment_name3}},{{userDepartment_name4}},{{userDepartment_name5}}",
+									"disabled": true
 								}
 							]
 						},
@@ -3055,62 +3011,62 @@
 	],
 	"variable": [
 		{
-			"id": "df883451-ae77-4c9e-b38a-6799c437cc7f",
+			"id": "cba49748-f7b2-45ca-924f-cd648b44aa4b",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "dc97ca28-7a03-4db1-8f9a-87c33764e251",
+			"id": "d5f9461e-4e94-4044-ba61-4516359c3f74",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "2d83be80-b29a-40ee-b2b8-dec49a0aa63d",
+			"id": "498b2ab0-283e-4450-9f61-2dd86bcc878d",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "c375a3b5-c70b-40b7-9a8f-18a931d906ae",
+			"id": "9325a408-d067-42fd-8437-8887711023c3",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "6bb72a34-80dd-4d0d-89d9-aab2cc833d07",
+			"id": "c88b33d3-bd0e-406b-84f4-2ef9e53d4a8f",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "7c8ebbba-60ba-4006-84ee-4ad3d3a19c26",
+			"id": "361078d6-bce7-4597-8e79-1dba983626c5",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "e098a41c-3007-469b-b4d2-d9160f39d2d4",
+			"id": "df3856aa-ad2f-4a01-998a-6b87bfa8b269",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "7e11d16b-668f-447e-b95f-9d8a0dd8a46c",
+			"id": "ee01142f-8c70-4f77-830f-099a96deba85",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "d370bd9c-d935-4a14-bb4b-4e35f76f9b3a",
+			"id": "c12a32f7-fe0f-40db-a19a-0362c05e6249",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "9f275a1a-60f8-4651-967d-a10ddc68cac3",
+			"id": "64ac7c4c-1cd0-42d3-950a-1e4e799f78a4",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "ddc77f0b-8996-4dd9-a26b-ac9aa1dc5107",
+			"id": "778c4f77-ca18-40ed-a0dc-b89b2f039fff",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "adae2274-c129-495d-832f-f0fad8b59303",
+			"id": "e94a3049-4608-4e5d-bb21-bfe453560d7f",
 			"key": "uuid",
 			"value": ""
 		}
