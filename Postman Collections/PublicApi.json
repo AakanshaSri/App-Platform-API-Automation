@@ -2306,6 +2306,189 @@
 					]
 				},
 				{
+					"name": "Search for users Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30e6ab34-8e3f-4ef5-83f0-5b37b60bed99",
+								"exec": [
+									"//Set collection veriabled from response",
+									"pm.test(\"Store values in collection variable\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"user_id\", jsonData.results[0].id);",
+									"    pm.environment.set(\"userFirstName\", jsonData.results[0].first_name);",
+									"    pm.environment.set(\"userLastName\", jsonData.results[0].last_name);",
+									"    pm.environment.set(\"userEmail\", jsonData.results[0].email);",
+									"",
+									"    ",
+									"    pm.environment.set(\"user_id2\", jsonData.results[1].id);",
+									"    pm.environment.set(\"userFirstName2\", jsonData.results[1].first_name);",
+									"    pm.environment.set(\"userLastName2\", jsonData.results[1].last_name);",
+									"    pm.environment.set(\"userEmail2\", jsonData.results[1].email);",
+									"",
+									"    pm.environment.set(\"user_id3\", jsonData.results[2].id);",
+									"    pm.environment.set(\"userFirstName3\", jsonData.results[2].first_name);",
+									"    pm.environment.set(\"userLastName3\", jsonData.results[2].last_name);",
+									"    pm.environment.set(\"userEmail3\", jsonData.results[2].email);",
+									"",
+									"    pm.environment.set(\"user_id4\", jsonData.results[3].id);",
+									"    pm.environment.set(\"userFirstName4\", jsonData.results[3].first_name);",
+									"    pm.environment.set(\"userLastName4\", jsonData.results[3].last_name);",
+									"    pm.environment.set(\"userEmail4\", jsonData.results[3].email);",
+									"",
+									"    pm.environment.set(\"user_id5\", jsonData.results[4].id);",
+									"    pm.environment.set(\"userFirstName5\", jsonData.results[4].first_name);",
+									"    pm.environment.set(\"userLastName5\", jsonData.results[4].last_name);",
+									"    pm.environment.set(\"userEmail5\", jsonData.results[4].email);",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "3b99321c-823e-4e26-ad3f-fcd6334c345f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/users/search/?size=10&page=2&q=aaka",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "can_view_goal_id",
+									"value": "<integer>",
+									"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
+									"disabled": true
+								},
+								{
+									"key": "feedback_cycle_id",
+									"value": "<integer>",
+									"description": "Append the number of feedback requests per user in a given cycle.",
+									"disabled": true
+								},
+								{
+									"key": "manager_id",
+									"value": "<integer>",
+									"description": "Search for users by their manager&#39;s ID",
+									"disabled": true
+								},
+								{
+									"key": "stats",
+									"value": "<boolean>",
+									"description": "Append goal statistics to each user in the response.",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "q",
+									"value": "aaka"
+								}
+							]
+						},
+						"description": "Returns a list of users matching the search criteria.\n            <strong>Matches on full name and username.</strong>"
+					},
+					"response": [
+						{
+							"id": "7ae1a776-5398-4856-9190-fa306fd7f1f5",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/search/?can_view_goal_id=<integer>&deactivated=false&feedback_cycle_id=<integer>&manager_id=<integer>&q=<string>&stats=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"description": "Append \"can_view\" to each user in the response if that user has\n                    permission to view the specified goal.",
+											"key": "can_view_goal_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Search for users that are deactivated",
+											"key": "deactivated",
+											"value": "false"
+										},
+										{
+											"description": "Append the number of feedback requests per user in a given cycle.",
+											"key": "feedback_cycle_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "Search for users by their manager&#39;s ID",
+											"key": "manager_id",
+											"value": "<integer>"
+										},
+										{
+											"description": "(Required) Query string matching user&#39;s full name or email",
+											"key": "q",
+											"value": "<string>"
+										},
+										{
+											"description": "Append goal statistics to each user in the response.",
+											"key": "stats",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"more\": \"<boolean>\",\n  \"nextUrl\": \"<string>\",\n  \"results\": [\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"est2\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"occaecat_e3\": \"<string>\",\n        \"veniam_d2\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"about\": \"<string>\",\n      \"attributes\": {\n        \"eiusmod54\": \"<string>\"\n      },\n      \"created_on\": \"<dateTime>\",\n      \"custom_values\": {\n        \"in_d60\": \"<string>\"\n      },\n      \"deactivated_on\": \"<dateTime>\",\n      \"deactivation_date\": \"<date>\",\n      \"department\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"email\": \"<email>\",\n      \"employee_id\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"is_goalmaster\": \"<boolean>\",\n      \"is_group_admin\": \"<boolean>\",\n      \"is_super_admin\": \"<boolean>\",\n      \"last_name\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"manager\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"uuid\": \"<uuid>\"\n      },\n      \"modified_on\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"preferred_name\": \"<string>\",\n      \"title\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Get a user",
 					"event": [
 						{
@@ -3028,7 +3211,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d2e9f0f5-3e6f-4cf3-9280-a194b5118fb9",
+				"id": "1ae6f8c7-6dc9-4104-9498-8316e7b44a42",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3038,7 +3221,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "c3229f1e-7831-4ae6-a955-e541c045d17d",
+				"id": "b265db3a-bb97-459e-8c97-3698422bae43",
 				"type": "text/javascript",
 				"exec": [
 					"",
@@ -3070,7 +3253,19 @@
 					"    Authorization : pm.environment.get(\"Manager_Auth\")",
 					"    }",
 					"}, function (err, response) {",
-					"    pm.test(\"Verify if Authorization: status code is 403 in case of non-admin user's id is passed\", function () {",
+					"    pm.test(\"Verify Authorization for Manager: status code is 403 in case of non-admin user's id is passed\", function () {",
+					"        pm.expect(response).to.have.status(403);",
+					"    });",
+					"});",
+					"",
+					"pm.sendRequest({",
+					"    url: pm.request.url,",
+					"    method: \"GET\",",
+					"    header: {",
+					"    Authorization : pm.environment.get(\"non_Manager_Auth\")",
+					"    }",
+					"}, function (err, response) {",
+					"    pm.test(\"Verify Authorization for non-Manager: status code is 403 in case of non-admin user's id is passed\", function () {",
 					"        pm.expect(response).to.have.status(403);",
 					"    });",
 					"});"
@@ -3080,62 +3275,62 @@
 	],
 	"variable": [
 		{
-			"id": "b2e95ecb-7f16-42d6-8438-87d8dee081af",
+			"id": "9264f746-80e6-45ae-80b9-0138739c3c6e",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "e8b79296-cb26-4e98-b722-19c9d449eee4",
+			"id": "2c1a6d55-09ef-4bac-972c-1e31b576be6e",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "88d85b43-85da-4d6f-8628-5a31c2ef30ed",
+			"id": "88d7df1d-6bb3-45fa-bba0-a84f835fcc74",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "564fc804-196b-4f02-864e-1cd2f3a1e52e",
+			"id": "0e635d7d-4bda-4310-93c0-d25384b057ba",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "7a5afe75-41cb-40be-a477-02c2680abbbe",
+			"id": "fc2001be-f9d6-4bf3-99a5-90e3fdb21eb7",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "860e50f1-9079-4c2f-a5b4-ff18e09a408c",
+			"id": "6ff4fed7-37b3-4ff8-8156-742544c7be96",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "31927d66-eaef-469b-9c9b-a4fef1788f76",
+			"id": "9e67c0c1-8ef3-49c7-a746-067798185857",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "97ebb17a-76f6-4f27-8a2e-59f5ec31145f",
+			"id": "766c36b2-50cc-4e80-9c9f-6db0233c0cf8",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "6928478a-83bc-4eda-ba57-ac2690f3646b",
+			"id": "f052a0df-ee13-4743-bd53-d0f8410498bb",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "ec0ff0e5-d18f-4379-8aeb-256fbc42c020",
+			"id": "1a7e3508-9608-450b-8092-8b597d7062b4",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "2467e87c-cbce-453a-8246-a54b19fa1e70",
+			"id": "6fb408b5-4287-43e5-841b-154d8460562d",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "085ccd77-e40e-4758-8adb-e155944f5b61",
+			"id": "e0b2cba0-df82-48a5-8aea-6ad87355689a",
 			"key": "uuid",
 			"value": ""
 		}
