@@ -1851,7 +1851,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b68fae5f-ab09-4c5e-a953-9e5783e12cf1",
+						"id": "4d70e1bc-3d15-4160-af54-67a06034b28c",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1861,7 +1861,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8c72a062-99c4-4b37-aca7-85567fb1befe",
+						"id": "41f5fa68-8b2a-4b9d-aeae-5261956218f1",
 						"type": "text/javascript",
 						"exec": [
 							"// Test error handling by sending a request to a non-existent endpoint",
@@ -1870,7 +1870,7 @@
 							"    url: \"http://rainforest.betterworks.com/api/v1/feedbackss\",",
 							"    method: \"GET\",",
 							"    header: {",
-							"    Authorization : pm.environment.get(\"{{Authorization}}\")",
+							"    Authorization : pm.environment.get(\"Authorization\")",
 							"    }",
 							"    ",
 							"}, function (err, response) {",
@@ -1878,7 +1878,18 @@
 							"        pm.expect(response).to.have.status(404);",
 							"    });",
 							"});",
-							""
+							"",
+							"// pm.sendRequest({",
+							"//     url: pm.request.url,",
+							"//     method: \"GET\",",
+							"//     header: {",
+							"//     Authorization : pm.environment.get(\"non_Manager_Auth\")",
+							"//     }",
+							"// }, function (err, response) {",
+							"//     pm.test(\"Verify Authorization for non-Manager: status code is 403 in case of non-admin user's id is passed\", function () {",
+							"//         pm.expect(response).to.have.status(403);",
+							"//     });",
+							"// });"
 						]
 					}
 				}
@@ -3275,62 +3286,62 @@
 	],
 	"variable": [
 		{
-			"id": "985c71c0-8ffb-4006-ab8b-8fbfbefc59c6",
+			"id": "4e088aac-51d0-413a-bdd0-8b1ce3febc56",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "983ae64a-83b8-4f38-bb59-5a0a002804f4",
+			"id": "d91434ad-9a2d-4131-9a2c-175d668145ed",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "192eac34-89cc-4060-9df0-d5da5854a40a",
+			"id": "02c2d00e-ed56-4afd-83da-83b2f9dcc4f7",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "25f7b712-b76c-4e6f-bfdf-07881f6d8d9e",
+			"id": "9b646bae-7cea-4fc5-86ca-b8863689a87d",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "81e62e59-3ef5-4ef9-b18c-1a5ef13ea044",
+			"id": "314932da-cf6c-4605-a04c-7ee1b5b7ebc8",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "569a7c80-eb32-4bc3-bd59-1ec8bdf12e7a",
+			"id": "05fa553b-f2de-4998-9d46-95633ddb867d",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "0141e284-af4b-4b51-a8ee-45ddf8e31462",
+			"id": "b8056f8e-1fe6-446b-8966-d00719c607f5",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "a9e64daf-c423-4117-ad7b-0937b3672222",
+			"id": "87b3bb9a-2af1-4b99-a5a1-be230616f432",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "c5660266-53a5-4e06-a90c-81cce515c252",
+			"id": "c2d8d6b3-6aa7-43d6-af38-939cb60e19b8",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "2d71563f-3566-49ab-9a30-2a2285f9a067",
+			"id": "66a457d8-843b-48a9-b2c7-e3a1587cf0f1",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "e62377b0-ab52-4457-aa0a-e6c53c72e545",
+			"id": "0c12ff0b-3fe9-4f86-8acd-9c6cb7075541",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "cdb77cf6-e871-4d81-bab8-4049feb51603",
+			"id": "56f0a1b5-0874-4b13-9841-f6afc8daef28",
 			"key": "uuid",
 			"value": ""
 		}
