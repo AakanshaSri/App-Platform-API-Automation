@@ -1851,7 +1851,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bd139695-2be3-4108-a167-e1b2b8c87c81",
+						"id": "b68fae5f-ab09-4c5e-a953-9e5783e12cf1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1861,7 +1861,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9c17102a-9ef6-4b0f-856a-e14754e68348",
+						"id": "8c72a062-99c4-4b37-aca7-85567fb1befe",
 						"type": "text/javascript",
 						"exec": [
 							"// Test error handling by sending a request to a non-existent endpoint",
@@ -1870,7 +1870,7 @@
 							"    url: \"http://rainforest.betterworks.com/api/v1/feedbackss\",",
 							"    method: \"GET\",",
 							"    header: {",
-							"    Authorization : \"{{Authorization}}\"",
+							"    Authorization : pm.environment.get(\"{{Authorization}}\")",
 							"    }",
 							"    ",
 							"}, function (err, response) {",
@@ -3275,62 +3275,62 @@
 	],
 	"variable": [
 		{
-			"id": "9264f746-80e6-45ae-80b9-0138739c3c6e",
+			"id": "985c71c0-8ffb-4006-ab8b-8fbfbefc59c6",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "2c1a6d55-09ef-4bac-972c-1e31b576be6e",
+			"id": "983ae64a-83b8-4f38-bb59-5a0a002804f4",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "88d7df1d-6bb3-45fa-bba0-a84f835fcc74",
+			"id": "192eac34-89cc-4060-9df0-d5da5854a40a",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "0e635d7d-4bda-4310-93c0-d25384b057ba",
+			"id": "25f7b712-b76c-4e6f-bfdf-07881f6d8d9e",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "fc2001be-f9d6-4bf3-99a5-90e3fdb21eb7",
+			"id": "81e62e59-3ef5-4ef9-b18c-1a5ef13ea044",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "6ff4fed7-37b3-4ff8-8156-742544c7be96",
+			"id": "569a7c80-eb32-4bc3-bd59-1ec8bdf12e7a",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "9e67c0c1-8ef3-49c7-a746-067798185857",
+			"id": "0141e284-af4b-4b51-a8ee-45ddf8e31462",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "766c36b2-50cc-4e80-9c9f-6db0233c0cf8",
+			"id": "a9e64daf-c423-4117-ad7b-0937b3672222",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "f052a0df-ee13-4743-bd53-d0f8410498bb",
+			"id": "c5660266-53a5-4e06-a90c-81cce515c252",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "1a7e3508-9608-450b-8092-8b597d7062b4",
+			"id": "2d71563f-3566-49ab-9a30-2a2285f9a067",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "6fb408b5-4287-43e5-841b-154d8460562d",
+			"id": "e62377b0-ab52-4457-aa0a-e6c53c72e545",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "e0b2cba0-df82-48a5-8aea-6ad87355689a",
+			"id": "cdb77cf6-e871-4d81-bab8-4049feb51603",
 			"key": "uuid",
 			"value": ""
 		}
