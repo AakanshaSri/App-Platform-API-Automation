@@ -2141,36 +2141,36 @@
 							"script": {
 								"id": "30e6ab34-8e3f-4ef5-83f0-5b37b60bed99",
 								"exec": [
-									"//Set collection veriabled from response",
-									"pm.test(\"Store values in collection variable\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.environment.set(\"user_id\", jsonData.results[0].id);",
-									"    pm.environment.set(\"userFirstName\", jsonData.results[0].first_name);",
-									"    pm.environment.set(\"userLastName\", jsonData.results[0].last_name);",
-									"    pm.environment.set(\"userEmail\", jsonData.results[0].email);",
+									"// //Set collection veriabled from response",
+									"// pm.test(\"Store values in collection variable\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.environment.set(\"user_id\", jsonData.results[0].id);",
+									"//     pm.environment.set(\"userFirstName\", jsonData.results[0].first_name);",
+									"//     pm.environment.set(\"userLastName\", jsonData.results[0].last_name);",
+									"//     pm.environment.set(\"userEmail\", jsonData.results[0].email);",
 									"",
 									"    ",
-									"    pm.environment.set(\"user_id2\", jsonData.results[1].id);",
-									"    pm.environment.set(\"userFirstName2\", jsonData.results[1].first_name);",
-									"    pm.environment.set(\"userLastName2\", jsonData.results[1].last_name);",
-									"    pm.environment.set(\"userEmail2\", jsonData.results[1].email);",
+									"//     pm.environment.set(\"user_id2\", jsonData.results[1].id);",
+									"//     pm.environment.set(\"userFirstName2\", jsonData.results[1].first_name);",
+									"//     pm.environment.set(\"userLastName2\", jsonData.results[1].last_name);",
+									"//     pm.environment.set(\"userEmail2\", jsonData.results[1].email);",
 									"",
-									"    pm.environment.set(\"user_id3\", jsonData.results[2].id);",
-									"    pm.environment.set(\"userFirstName3\", jsonData.results[2].first_name);",
-									"    pm.environment.set(\"userLastName3\", jsonData.results[2].last_name);",
-									"    pm.environment.set(\"userEmail3\", jsonData.results[2].email);",
+									"//     pm.environment.set(\"user_id3\", jsonData.results[2].id);",
+									"//     pm.environment.set(\"userFirstName3\", jsonData.results[2].first_name);",
+									"//     pm.environment.set(\"userLastName3\", jsonData.results[2].last_name);",
+									"//     pm.environment.set(\"userEmail3\", jsonData.results[2].email);",
 									"",
-									"    pm.environment.set(\"user_id4\", jsonData.results[3].id);",
-									"    pm.environment.set(\"userFirstName4\", jsonData.results[3].first_name);",
-									"    pm.environment.set(\"userLastName4\", jsonData.results[3].last_name);",
-									"    pm.environment.set(\"userEmail4\", jsonData.results[3].email);",
+									"//     pm.environment.set(\"user_id4\", jsonData.results[3].id);",
+									"//     pm.environment.set(\"userFirstName4\", jsonData.results[3].first_name);",
+									"//     pm.environment.set(\"userLastName4\", jsonData.results[3].last_name);",
+									"//     pm.environment.set(\"userEmail4\", jsonData.results[3].email);",
 									"",
-									"    pm.environment.set(\"user_id5\", jsonData.results[4].id);",
-									"    pm.environment.set(\"userFirstName5\", jsonData.results[4].first_name);",
-									"    pm.environment.set(\"userLastName5\", jsonData.results[4].last_name);",
-									"    pm.environment.set(\"userEmail5\", jsonData.results[4].email);",
+									"//     pm.environment.set(\"user_id5\", jsonData.results[4].id);",
+									"//     pm.environment.set(\"userFirstName5\", jsonData.results[4].first_name);",
+									"//     pm.environment.set(\"userLastName5\", jsonData.results[4].last_name);",
+									"//     pm.environment.set(\"userEmail5\", jsonData.results[4].email);",
 									"",
-									"});",
+									"// });",
 									""
 								],
 								"type": "text/javascript"
@@ -2190,7 +2190,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/users/search/?size=10&page=2&q=aaka",
+							"raw": "{{baseUrl}}/api/v1/users/search/?size=10&page=1&q=Gua",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2232,11 +2232,11 @@
 								},
 								{
 									"key": "page",
-									"value": "2"
+									"value": "1"
 								},
 								{
 									"key": "q",
-									"value": "aaka"
+									"value": "Gua"
 								}
 							]
 						},
@@ -3293,62 +3293,62 @@
 	],
 	"variable": [
 		{
-			"id": "ab04c399-cb8d-4338-82f6-1776a2317f4a",
+			"id": "b0234078-55e3-40e0-834c-5ae843ebb567",
 			"key": "userId",
 			"value": ""
 		},
 		{
-			"id": "9f32214a-a615-4c7b-99fb-f10ca0e47842",
+			"id": "257de089-7bb7-4310-b60a-84de821c2dbd",
 			"key": "userFirstName",
 			"value": ""
 		},
 		{
-			"id": "5f956ef3-f2d9-4ceb-a6be-bdbd12bd621f",
+			"id": "c8c41908-5ea7-4d75-96ab-ea9d99d71c14",
 			"key": "userSecondName",
 			"value": ""
 		},
 		{
-			"id": "481ed28a-1904-428d-94d0-b50a4b37b657",
+			"id": "818b5f5f-2213-4dcc-8239-3cbf4473e6a1",
 			"key": "feedback_template_id",
 			"value": ""
 		},
 		{
-			"id": "b2ec902d-0638-49b6-9d85-1e059b091d28",
+			"id": "059244af-74ec-4f47-9cfb-15d4be59ff64",
 			"key": "feedback_for_user",
 			"value": ""
 		},
 		{
-			"id": "962badc2-4f52-4523-9756-60ffad2e5977",
+			"id": "740bc86d-ec54-4d30-9688-26a03b0d2de1",
 			"key": "feedback_requested_by",
 			"value": ""
 		},
 		{
-			"id": "7cb86b55-028b-48db-bef6-24475f7ff3bd",
+			"id": "9d52b251-ab1b-489d-9797-805f6446d286",
 			"key": "user_id",
 			"value": ""
 		},
 		{
-			"id": "ad1f17a4-edec-4722-aaa0-8b78d9f266de",
+			"id": "8cf24122-4315-4f2b-a93a-f911042d4bc8",
 			"key": "user_id2",
 			"value": ""
 		},
 		{
-			"id": "c20d53e7-92be-4329-bef3-3fb4d3a48918",
+			"id": "f2544d89-1803-4a10-979a-ef170789789c",
 			"key": "user_id3",
 			"value": ""
 		},
 		{
-			"id": "d152bd2d-1fce-4da8-b4a1-ee6b9a6b93cc",
+			"id": "282fd851-f6b0-4009-8807-a2fb4d2d13a9",
 			"key": "user_id4",
 			"value": ""
 		},
 		{
-			"id": "21f5f474-e5bb-46a4-8e88-acb0e26b4a85",
+			"id": "6292fbc0-125a-4080-bc72-6b81a7972c9b",
 			"key": "user_id5",
 			"value": ""
 		},
 		{
-			"id": "16f31948-f0ae-4dbd-9f99-f30f6be82268",
+			"id": "385ae26b-5e88-41ef-81a1-52265cb5b134",
 			"key": "uuid",
 			"value": ""
 		}
